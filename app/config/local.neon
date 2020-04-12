@@ -11,4 +11,5 @@ services:
     - Awoo\Models\VotingModel
     - Awoo\Models\UserModel
     - Awoo\Models\MainModel
+    - Awoo\Models\NewsModel
     - Awoo\Auth\Authorization::awooThePerms()

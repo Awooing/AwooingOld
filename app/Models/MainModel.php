@@ -30,19 +30,24 @@ class MainModel
     /** @var UserModel */
     public $user;
 
+    /** @var NewsModel */
+    public $news;
+
     /**
      * MainModel constructor.
      * @param Context $db
      * @param Passwords $pw
      * @param VotingModel $vote
      * @param UserModel $user
+     * @param NewsModel $news
      */
-    public function __construct(Context $db, Passwords $pw, VotingModel $vote, UserModel $user)
+    public function __construct(Context $db, Passwords $pw, VotingModel $vote, UserModel $user, NewsModel $news)
     {
         $this->database = $db;
         $this->passwords = $pw;
         $this->voting = $vote;
         $this->user = $user;
+        $this->news = $news;
     }
 
     /* Components */

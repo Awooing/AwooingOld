@@ -5,6 +5,11 @@ body {
     width: 0;
     background: transparent;
 }
+h2#title-homepage {
+    color: white;
+    font-family: 'Livvic', sans-serif;
+    font-weight: 600;
+}
 .awoo-container {
     min-height: calc(100vh - 4.6rem);
 }
@@ -20,19 +25,51 @@ body {
     padding: 2rem;
     border-radius: 2rem;
     margin-top: 2rem;
-    margin-bottom: 4rem
+    color: var(--white);
+}
+.awoo-wrapper h1, h2, h3, h4, h5, h6 {
+    color: var(--white);
 }
 .awoo-wrapper.no-padding {
     padding: 0 !important;
 }
 .awoo-wrapper.multiple-blocks {
-    margin-top: 0 !important;
-    margin-bottom: 1.4rem
+    margin-top: 2rem !important;
+    margin-bottom: 0 !important;
+}
+.awoo-wrapper:last-child {
+    margin-bottom: 2rem !important;
 }
 div.awoo-wrapper h1 {
     text-align: center;
     color: var(--white);
     margin-top: 2rem;
+}
+div.awoo-wrapper h2, a.title-link {
+    cursor: pointer;
+    text-align:left;
+    color: white;
+    font-weight: 700;
+    font-size: 1.4rem
+}
+div.awoo-wrapper a.title-link {
+    color: var(--primary);
+}
+div.awoo-wrapper a.title-link:hover {
+    color: var(--light);
+}
+h4#wrapper-pop {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--white);
+    text-align: left;
+    margin: 2rem 0 0 2rem;
+    background: rgba(0,0,0,0.2);
+    display: inline-block;
+    padding: 0.4rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+}
 }
 div.awoo-wrapper div.awoo-poll {
     padding: 2rem;
@@ -70,6 +107,10 @@ div.awoo-wrapper div.awoo-poll div.progress {
     margin-bottom: 10px;
     height: 2rem !important;
     background: #212529;
+}
+div.awoo-wrapper table.table th,td {
+    border-top: 0.125rem solid var(--gray-dark) !important;
+    border-bottom: 0.125rem solid var(--gray-dark) !important;
 }
 /*** Flashes ***/
 .flash {
@@ -131,7 +172,7 @@ b#flash-date {
 #awoo-banner {
     height: 15rem;
     min-height: unset;
-    background: url(../../static/img/senko.png) 60%;
+    background: url(../../static/img/MomijiAwoo.png) 58%;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -143,7 +184,7 @@ b#flash-date {
         font-size: 1rem;
     }
     #awoo-banner {
-        background: url(../../static/img/senko.png) 110%;
+        background: url(../../static/img/MomijiAwoo.png) 108%;
         background-size: contain;
         background-repeat: no-repeat;
     }
@@ -163,4 +204,13 @@ b#flash-date {
 .form-control:focus {
     background: rgba(0, 0, 0, 0.25);
     border-color: rgba(0, 0, 0, 0.25);
+}
+/*** Tags ***/
+.tag {
+    padding: 4px;
+    border-radius: 4px;
+    font-size: 1rem
+}
+.tag.orange {
+    background: var(--orange);
 }

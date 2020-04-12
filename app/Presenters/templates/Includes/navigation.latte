@@ -18,18 +18,23 @@
                 </div>
             </div>
             <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
-                <li class="nav-item dropdown">
-                    <a href="Anime:all" class="nav-link">
-                        <span class="nav-link-inner--text">All Anime</span>
+                <li class="nav-item">
+                    <a n:href="Homepage:default" class="nav-link">
+                        <span class="nav-link-inner--text">Home</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link">
-                        <span class="nav-link-inner--text">Announcements</span>
+                <li class="nav-item">
+                    <a n:href="News:default" class="nav-link">
+                        <span class="nav-link-inner--text">News</span>
                     </a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link">
+                <li class="nav-item">
+                    <a n:href="Awoo:random" class="nav-link">
+                        <span class="nav-link-inner--text">Awoo Pics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://discord.gg/wolke" class="nav-link">
                         <span class="nav-link-inner--text">Discord</span>
                     </a>
                 </li>
@@ -46,7 +51,7 @@
                                 {$user->getIdentity()->username}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item ajax" n:href=":awoo" >Go Awoo</a>
+                                <a class="dropdown-item ajax" n:href="Homepage:awoos" >Go Awoo</a>
                                 {if $user->isAllowed("admin", "view")}<a class="dropdown-item ajax" n:href="Admin:default">Admin Panel</a>{/if}
                                 <a class="dropdown-item ajax" n:href="Auth:logout">Logout</a>
                             </div>

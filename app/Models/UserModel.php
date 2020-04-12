@@ -10,6 +10,7 @@ namespace Awoo\Models;
 use Latte\Engine;
 use Nette\Database\Context;
 use Nette\Database\Table\ActiveRow;
+use Nette\Database\Table\Selection;
 use Nette\Http\Session;
 use Nette\Mail\Mailer;
 use Nette\Mail\Message;
@@ -106,6 +107,8 @@ class UserModel
         } else {
             return false;
         }*/
+        // TODO: fix
+        return false;
     }
 
     /**
@@ -194,6 +197,17 @@ class UserModel
         $this->activateUser($a);
         $code->delete();
         return Json::encode(["error"=>"success"]);
+    }
+
+    /**
+     * Gets all users,
+     * or returns null if the table
+     * doesn't exist or there are no users.
+     * @return Selection|null
+     */
+    public function getUsers(): ?Selection
+    {
+        return $this->database->table("awoo_users");
     }
 
 }

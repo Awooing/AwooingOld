@@ -1,0 +1,9 @@
+{block title}{$news->title}{/block}
+{block content}
+    <style>
+    </style>
+    <h4 id="wrapper-pop">Posted by {$author->showAs} &ndash; {$news->created_at|date:"d/m/Y"}</h4>
+    <div class="awoo-wrapper" style="margin-bottom: 4rem;color: white;margin-top: 0">
+        {$news->content|noescape|awooIt}
+    </div>
+{/block}

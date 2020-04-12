@@ -10,6 +10,7 @@ namespace App\Presenters;
 use Nette;
 use Awoo\Models\MainModel;
 use Nette\Application\AbortException;
+use Nette\Application\UI\Form;
 use Nette\Database\Context;
 
 class AdminPresenter extends BasePresenter
@@ -48,6 +49,86 @@ class AdminPresenter extends BasePresenter
             $this->flashMessage("<script id='41458148941125_denied'>Swal.fire({title: 'Access Denied', content: 'You don\'t have access to this site.', icon:'error', showConfirmButton: false, timer: 1000, timerProgressBar: true});$('#41458148941125_denied').remove();</script>", "script");
             $this->redirect("Homepage:");
         }
+    }
+
+    /**
+     * Gets all Posts from NewsModel
+     * and adds them to the template
+     */
+    public function actionListPosts(): void
+    {
+        $this->template->posts = $this->model->news->getArticles();
+        $this->template->delUrl = $this->link("Admin:deletePost");
+        $this->template->users = $this->model->user->getUsers();
+    }
+
+    public function actionEditPost($id): void
+    {
+        if ($id === null || !$id) {
+            $this->error("Page Not Found", 404);
+        }
+        $post = $this->model->news->getArticleById($id);
+        if (!$post) {
+            $this->error("Page Not Found", 404);
+        }
+        $this['post']->setDefaults($post->toArray());
+    }
+
+    public function actionDeletePost($p): void
+    {
+        if ($p === null || !$p) {
+            $this->error("Page Not Found", 404);
+        }
+        $post = $this->model->news->getArticleById($p);
+        if (!$post) {
+            $this->error("Page Not Found", 404);
+        }
+        $post->delete();
+        $this->redirect("Admin:listPosts");
+    }
+    /**
+     * Creates New/Edit Post Form
+     * @return Form
+     */
+    protected function createComponentPost(): Form {
+
+        $form = new Form;
+
+        $form->setHtmlAttribute("class", "");
+        $form->addText('title', 'Post Title:')->setHtmlAttribute("class", "form-control")->setRequired();
+        $form->addTextArea('content', null)->setHtmlAttribute("class", "form-control")->setHtmlAttribute("id", "wysiwyg")->setRequired();
+        $form->addSubmit('send', 'Send')->setHtmlAttribute("class", "btn btn-primary float-right");
+
+        $renderer = $form->getRenderer();
+        $renderer->wrappers['controls']['container'] = 'div';
+        $renderer->wrappers['pair']['container'] = 'dl';
+        $renderer->wrappers['label']['container'] = 'dt';
+        $renderer->wrappers['control']['container'] = 'dd';
+        $renderer->wrappers['button']['container'] = null;
+
+        $form->onSuccess[] = [$this, 'processPost'];
+
+        return $form;
+    }
+
+    /**
+     * Processes the New/Edit Forms
+     * @param Form $f
+     * @param \stdClass $vo
+     */
+    public function processPost(Form $f, array $v): void
+    {
+        $postId = $this->getParameter('id');
+        if ($postId) {
+            $post = $this->database->table("awoo_posts")->get($postId);
+            $post->update($v);
+            $this->flashMessage('<script id="script">Swal.fire({title:"Success", text:"The post was edited successfully.", icon:"success"});</script>', "script");
+        } else {
+            $v['user_id'] = $this->getUser()->getIdentity()->getId();
+            $post = $this->database->table("awoo_posts")->insert($v);
+            $this->flashMessage('<script id="script">Swal.fire({title:"Success", text:"The post was created successfully.", icon:"success"});</script>', "script");
+        }
+        $this->redirect("Admin:listPosts");
     }
 
 }

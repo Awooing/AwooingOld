@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title n:snippet="title">{ifset title}{include title|stripHtml} &ndash; {/ifset}Awoo Admin</title>
+    {include '../Includes/head.latte'}
+</head>
+
+{snippet login}
+    {if !$user->isLoggedIn()}
+        {include '../Includes/loginModal.latte'}
+    {/if}
+{/snippet}
+
+<body class="index-page bg-dark">
+
+{snippet navigation}{include '../Includes/navigation.latte'}{/snippet}
+
+<div class="awoo-container" >
+
+    <!-- ::Banner -->
+    <div class="section section-hero section-shaped" id="awoo-banner">
+        <div class="shape shape-style-1 shape-primary awoo-banner-gradient">
+        </div>
+        <div class="page-header">
+            <div class="container shape-container d-flex align-items-center py-lg">
+                <div class="col px-0">
+                    <h1 n:snippet="banner" class="welcome" style="margin:0;">{ifset title}{include title|stripHtml}{else}The Awooing Place{/ifset}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- \::Banner -->
+    {snippet content}
+        <div id="main-container" class="container">
+
+            <!-- TODO: cleanup flashes -->
+            <!-- Flashes -->
+            <div class="flashes">
+                {foreach $flashes as $flash}
+                    {if $flash->type == "script"}
+                        {$flash->message|noescape}
+                    {else}
+                        <div n:class="flash">
+                            {if $flash->type == "noescape"}
+                                <div class="flash-header">
+                                    <p>{explode(";", $flash->message)[0]}</p>
+                                </div>
+                                <div class="flash-body">
+                                    <b>{explode(";", $flash->message)[1]}</b> {explode(";", $flash->message|noescape)[2]}
+                                </div>
+                            {else}
+                                <div n:class="flash-header, $flash->type">
+                                    <p>{explode(";", $flash->message)[0]}</p>
+                                </div>
+                                <div class="flash-body">
+                                    <p style="margin: 0"><b id="flash-date">{explode(";", $flash->message)[1]}</b> {explode(";", $flash->message)[2]}</p>
+                                </div>
+                            {/if}
+                        </div>
+                    {/if}
+                {/foreach}
+                <!-- /Flashes -->
+            </div>
+
+            {if $user->isLoggedIn()}
+                {if $user->isAllowed("admin", "view")}
+                    <div class="awoo-wrapper" style="color: white;">
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" id="tabs-text-1-tab" type="button" id="dropNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item ajax" n:href="Admin:createPost">Create New Post</a>
+                                <a class="dropdown-item ajax" n:href="Admin:listPosts">List Posts</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle" id="tabs-text-1-tab" type="button" id="dropUsers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item ajax" n:href="Admin:listUsers">List Users</a>
+                                <a class="dropdown-item ajax" n:href="Admin:findUser">Find User</a>
+                                <a class="dropdown-item ajax" n:href="Admin:findUser">Ban User</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle disabled" id="tabs-text-1-tab" type="button" id="dropUsers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Awoos</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <!--<a class="dropdown-item ajax" n:href="Admin:listUsers">List Users</a>
+                                <a class="dropdown-item ajax" n:href="Admin:findUser">Find User</a>
+                                <a class="dropdown-item ajax" n:href="Admin:findUser">Ban User</a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ::so here we start -->
+                    {include content}
+                    <!-- \::so here we end -->
+                {/if}
+            {/if}
+        </div>
+    {/snippet}
+</div>
+
+{include '../Includes/footer.latte'}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{$baseUrl}/static/js/naja/Naja.js"></script>
+<script src="{$baseUrl}/static/js/main.js"></script>
+<script src="{$baseUrl}/static/js/bootstrap/popper.min.js" type="text/javascript"></script>
+<script src="{$baseUrl}/static/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="{$baseUrl}/static/js/bootstrap/argon.min.js?v=1.2.0" type="text/javascript"></script>
+{snippet js}
+    {ifset js}{include js}{/ifset}
+{/snippet}
+</body>
+
+</html>

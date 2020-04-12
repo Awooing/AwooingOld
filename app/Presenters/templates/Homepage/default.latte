@@ -5,29 +5,14 @@
         <h5 style="text-align:center;color: darkgray;text-transform: uppercase;">Where the {awooo}ers go</h5>
     </div>
 
-    <!--<div class="awoo-wrapper" style="background: rgba(0,0,0,0.2);padding: 2rem;border-radius: 2rem;margin-top: 2rem;margin-bottom: 2rem">
-        <h2 style="text-align:left;color: white;font-weight: 700;font-size: 1.4rem"><span style="background: orange;padding: 4px;border-radius: 4px;font-size: 1rem">AWOO NEWS</span> The Awoo Council Selection</h2>
-        <span style="padding: 3rem"></span>
-        <h5 style="text-align: left;color: darkgray;">
-            Hello everyone,
-            <br/><br/>
-            <p style="text-align: left;color: darkgray;">as many of you know, we are in need of a new {awooo} council. <br>That will change because there's a voting running for the new Awoo Council applicants.
-            </p>
-        </h5>
-        <br/>
-        <h5>Do you want to vote?
-            <p style="text-align: left;color: darkgray;">Everyone has the right to vote, to do so join the <a href="https://discordapp.com/wolke">Poi Community</a> Discord, in the channel #polls you can vote for the applicant via the {awooo} reaction. You may vote for multiple people, it is allowed. </p>
-        </h5>
-        <br/>
-        <h5>Who should I vote for?
-            <p style="text-align: left;color: darkgray;">Each applicant wrote a text why he/she should be in the Awoo Council. <a class="ajax" n:href="Voting:applicants">You can read it here</a>.
-                <br>You can pick whoever appeals the most to you.</p>
-        </h5>
-        <br/>
-        <h5>You can watch the voting <a class="ajax" n:href="Voting:">here</a></h5>
-        <br/><br/>
-        <h5>Best of luck to every applicant!</h5>
+    <h2 id="title-homepage">Latest News</h2>
 
-    </div>-->
+    {foreach $newstellers as $news}
+        <div class="awoo-wrapper">
+            <a class="title-link ajax" n:href="News:view $news->id">{$news->title}</a>
+            <h4 style="font-size: 1rem;font-weight: 300;color: var(--gray);margin: 0">By {$userModel->getUser($news->user_id)->showAs} &ndash; {$news->created_at|date:"d/m/Y"}</h4>
 
+            {$news->content|noescape|striptags|truncate:200|awooIt} <a style="border-radius: 2rem;margin-top: 4px" class="btn btn-primary float-right ajax" n:href="News:view $news->id">See more</a>
+        </div>
+    {/foreach}
 {/block}

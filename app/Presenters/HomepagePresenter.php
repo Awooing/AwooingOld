@@ -30,4 +30,15 @@ class HomepagePresenter extends BasePresenter {
         $this->model = $model;
     }
 
+    /**
+     * Gets latest news,
+     * adds it to the template
+     */
+    public function actionDefault(): void
+    {
+        $latest = $this->model->news->getArticles()->order("created_at DESC")->limit(3);
+        $this->template->newstellers = $latest;
+        $this->template->userModel = $this->model->user;
+    }
+
 }

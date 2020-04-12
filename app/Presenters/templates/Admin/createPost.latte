@@ -1,9 +1,16 @@
+{block title}Create New Post{/block}
+
 {block content}
-    {if $user->isLoggedIn()}
-        {if $user->isAllowed("post", "create")}
-            <div class="awoo-wrapper">
-                {control post}
-            </div>
-        {/if}
-    {/if}
+    <div class="awoo-wrapper" style="min-height: 34rem">
+        {control post}
+
+        <p class="text-muted">If the text editor doesn't show up, refresh the page.<br/>I dunno, sometimes it just doesn't want to {awooo} with us.</p>
+    </div>
+{/block}
+
+{block js}
+    <script src="{$baseUrl}/static/js/ckeditor/ckeditor.js"></script>
+    <script n:syntax="off">
+        CKEDITOR.replace('wysiwyg', {skin: "ckeditor-basic-moono-dark-biskrem" });
+    </script>
 {/block}

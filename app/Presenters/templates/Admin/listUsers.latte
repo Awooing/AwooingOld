@@ -1,0 +1,47 @@
+{block title}All Posts{/block}
+
+{block content}
+    <div class="awoo-wrapper" style="min-height: 20rem">
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Active</th>
+                <th>Banned</th>
+                <th class="text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {foreach $users as $user}
+                <tr>
+                    <td class="text-center">{$post->id}</td>
+                    <td>{$post->title}</td>
+                    <td>{$users->get($post->user_id)->showAs}</td>
+                    <td>{$post->created_at|date:"d/m/Y"}</td>
+                    <td>{$post->content|stripHtml|truncate:40}</td>
+                    <td class="td-actions text-right">
+                        <a type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm" data-original-title="Edit the Post" n:href="Admin:editPost $post->id">
+                            <i class="fas fa-pencil-alt"></i>
+                        </a>
+                        <a type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm" style="color: white" awoo-delete="{$delUrl}?p={$user->id}" data-original-title="Ban the User" n:syntax=off onclick='{
+                                        Swal.fire({
+                                        title:"Delete Post?",
+                                        text:"This action cannot be undone.",
+                                        showCancelButton:true,
+                                        showConfirmButton:true,
+                                        confirmButtonText:"Delete",
+                                        confirmButtonClass:"btn btn-danger ajax",
+                                        cancelButtonClass:"btn btn-neutral",
+                                        buttonsStyling: false,
+                                        icon:"warning"}).then((res) => { if(res.value) { window.location.href = $(this).attr("awoo-delete") } })}'>
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            {/foreach}
+            </tbody>
+        </table>
+    </div>
+{/block}

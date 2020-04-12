@@ -71,4 +71,5 @@ class NewsModel
         return $this->getArticles()->where("created_at = ?", $date);
     }
 
+
 }
