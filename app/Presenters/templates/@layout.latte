@@ -80,11 +80,11 @@
 
 {include './Includes/footer.latte'}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="{$baseUrl}/js/naja/Naja.js"></script>
-<script src="{$baseUrl}/js/main.js"></script>
-<script src="{$baseUrl}/assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="{$baseUrl}/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-<script src="{$baseUrl}/assets/js/argon-design-system.min.js?v=1.2.0" type="text/javascript"></script>
+<script src="{$baseUrl}/static/js/naja/Naja.js"></script>
+<script src="{$baseUrl}/static/js/main.js"></script>
+<script src="{$baseUrl}/static/js/bootstrap/popper.min.js" type="text/javascript"></script>
+<script src="{$baseUrl}/static/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="{$baseUrl}/static/js/bootstrap/argon.min.js?v=1.2.0" type="text/javascript"></script>
 {snippet js}
 	{ifset js}{include js}{/ifset}
 {/snippet}

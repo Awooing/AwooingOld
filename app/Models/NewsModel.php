@@ -50,6 +50,9 @@ class NewsModel
         return $this->getArticles()->where("user_id = ?", $uid);
     }
 
-    public function getArticlesByDate($)
+    public function getArticlesByDate($date): ?Selection
+    {
+        return $this->getArticles()->where("created_at = ?", $date);
+    }
 
 }

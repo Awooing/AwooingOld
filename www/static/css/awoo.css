@@ -1,0 +1,166 @@
+body {
+    background: var(--gray-dark);
+}
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+.awoo-container {
+    min-height: calc(100vh - 4.6rem);
+}
+.awoo {
+    height: 1.2rem;
+    margin-bottom: 8px;
+}
+.awoo-gradient {
+    background: linear-gradient(45deg, #2e1c74, rgb(57, 51, 136)) !important;
+}
+.awoo-wrapper {
+    background: rgba(0,0,0,0.2);
+    padding: 2rem;
+    border-radius: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem
+}
+.awoo-wrapper.no-padding {
+    padding: 0 !important;
+}
+.awoo-wrapper.multiple-blocks {
+    margin-top: 0 !important;
+    margin-bottom: 1.4rem
+}
+div.awoo-wrapper h1 {
+    text-align: center;
+    color: var(--white);
+    margin-top: 2rem;
+}
+div.awoo-wrapper div.awoo-poll {
+    padding: 2rem;
+    background: transparent;
+    border-radius: 1rem;
+    margin-top: 3rem;
+}
+div.awoo-wrapper div.awoo-poll p {
+    color: var(--white);
+    font-weight: 500;
+    margin: 0 0 8px;
+}
+div.awoo-wrapper div.awoo-poll h2 {
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--white);
+}
+div.awoo-wrapper div.awoo-poll h2 img {
+    height: 2rem;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+div.awoo-wrapper div.awoo-poll h2 img:hover {
+    transform: scale(1.3);
+}
+div.awoo-wrapper div.awoo-poll span#total {
+    color: var(--blue);
+    cursor: pointer;
+}
+div.awoo-wrapper div.awoo-poll span#total:hover {
+    color: #2a75c6;
+}
+div.awoo-wrapper div.awoo-poll div.progress {
+    margin-bottom: 10px;
+    height: 2rem !important;
+    background: #212529;
+}
+/*** Flashes ***/
+.flash {
+    margin-top: 2rem;
+    border-radius: 1.2rem;
+    color: white;
+    background: #525f7f;
+}
+.flash-header {
+    border-top-left-radius: 1.2rem;
+    border-top-right-radius: 1.2rem;
+    padding: 0.42rem;
+    text-align: left;
+}
+.flash-header.danger {
+    background: var(--red);
+}
+.flash-header.warning {
+    background: var(--orange);
+}
+.flash-header.info {
+    background: var(--blue);
+}
+.flash-header p {
+    font-family: 'Livvic', sans-serif;
+    font-weight: 500;
+    margin: 0 0 0 1rem;
+}
+.flash-header.danger p:before {
+    font-family: 'FontAwesome', sans-serif;
+    margin-right: 8px;
+    content: "\f06a";
+}
+.flash-header.warning p:before {
+    font-family: 'FontAwesome', sans-serif;
+    margin-right: 8px;
+    content: "\f071";
+}
+.flash-header.info p:before {
+    font-family: 'FontAwesome', sans-serif;
+    margin-right: 8px;
+    content: "\f05a";
+}
+.flash-body {
+    padding: 0.42rem;
+    margin-left: 1rem;
+}
+b#flash-date {
+    margin-left: 1rem;
+    font-weight: 600;
+}
+/** Welcome **/
+.welcome {
+    color: white;
+    font-family: 'Livvic', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+#awoo-banner {
+    height: 15rem;
+    min-height: unset;
+    background: url(../../static/img/senko.png) 60%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#awoo-banner-gradient {
+    background: linear-gradient(150deg, #281483 15%, #8f6ed5 70%, #d782d9 94%) !important;
+}
+@media (orientation: portrait) {
+    .welcome {
+        font-size: 1rem;
+    }
+    #awoo-banner {
+        background: url(../../static/img/senko.png) 110%;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+/*** Forms ***/
+.darkfade {
+    background: rgba(0, 0, 0, 0.45);
+}
+#frm-register {
+    padding-top: 5rem;
+}
+.form-control {
+    background: rgba(0, 0, 0, 0.18);
+    border-color: rgba(0, 0, 0, 0.18);
+}
+
+.form-control:focus {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(0, 0, 0, 0.25);
+}
