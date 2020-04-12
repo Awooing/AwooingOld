@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Awooing</title>
+	<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@100;300;500;700&amp;display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="shortcut icon" href="https://cdn.discordapp.com/emojis/322522663304036352.png?v=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" /><link rel="stylesheet" href="{$baseUrl}/awoo.css">
+	<style>
+		body {
+			background: #333333;
+			margin: 0;
+			font-family: 'Livvic', sans-serif;
+		}
+		h1, h2, h3, h4, h5, h6, p {
+			margin: 0;
+			color: white;
+		}
+		::-webkit-scrollbar {
+			width: 0;
+			background: transparent;
+		}
+
+		.awoo-container {
+			background: #333333;
+			min-height: calc(100vh - 5.5rem);
+			margin-top: 4rem;
+		}
+		.awoo-container:last-child {
+			margin-bottom: 4rem;
+		}
+		.footer {
+			background: #212529;
+			height: 5.5rem;
+			color: white;
+		}
+		.footer p {
+			text-align: center;
+			padding-top: 2rem
+		}
+		a {
+			color: white;
+			text-decoration: none;
+			border-bottom: 1px dotted gray;
+		}
+		a:hover {
+			color: white;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container awoo-container">
+
+		{ifset title}
+			<div class="awoo-wrapper" style="background: rgba(0,0,0,0.2);padding: 2rem;border-radius: 2rem;margin-top: 2rem">
+				<h2 style="text-align:center;color: white;font-weight: 700;">{include title|stripHtml}</h2>
+			</div>
+		{/ifset}
+
+		{block content}{/block}
+	</div>
+
+
+
+	<footer class="footer">
+		<p>Awooing.moe &bullet; <a href="https://discord.gg/wolke">Join the Poi Community</a></p>
+	</footer>
+
+	{block scripts}
+		<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		{ifset js}{include js}{/ifset}
+	{/block}
+</body>
+</html>

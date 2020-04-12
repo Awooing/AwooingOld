@@ -1,0 +1,7 @@
+parameters:
+
+
+database:
+	dsn: 'mysql:host=localhost;dbname=awoo'
+	user: awoo
+	password: aw00isL1fe
