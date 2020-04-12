@@ -1,0 +1,10 @@
+{block content}
+
+    {if $user->isLoggedIn()}
+        {if $user->isAllowed("post", "create")}
+            <div class="awoo-wrapper">
+                {control post}
+            </div>
+        {/if}
+    {/if}
+{/block}

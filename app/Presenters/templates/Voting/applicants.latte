@@ -1,0 +1,11 @@
+{block title}Council Applicants{/block}
+{block content}
+
+    {foreach $applicants as $applicant}
+        <div class="awoo-wrapper multiple-blocks" >
+            <h2>{$applicant->name}</h2>
+            <p>{$applicant->content|noescape|awooIt}</p>
+        </div>
+    {/foreach}
+    
+{/block}

@@ -1,0 +1,66 @@
+<!-- ::Includes/navigation -->
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global"
+                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbar_global">
+            <div class="navbar-collapse-header">
+                <div class="row">
+                    <div class="col-6">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar_global"
+                                aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                <li class="nav-item dropdown">
+                    <a href="Anime:all" class="nav-link">
+                        <span class="nav-link-inner--text">All Anime</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">
+                        <span class="nav-link-inner--text">Announcements</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">
+                        <span class="nav-link-inner--text">Discord</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                <li class="nav-item">
+                    {if $user->isLoggedIn()}
+                        <div class="dropdown">
+                            <button class="btn btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {if $user->getIdentity()->role === "council"}
+                                    <span style="font-size: 14px;color: white;padding: 4px;background: var(--red);border-radius: 6px;margin-right: 6px">ADMIN</span>
+                                {/if}
+                                {$user->getIdentity()->username}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item ajax" n:href=":awoo" >Go Awoo</a>
+                                {if $user->isAllowed("admin", "view")}<a class="dropdown-item ajax" n:href="Admin:default">Admin Panel</a>{/if}
+                                <a class="dropdown-item ajax" n:href="Auth:logout">Logout</a>
+                            </div>
+                        </div>
+                    {else}
+                        <a href="#" data-toggle="modal" data-target="#modal-form"
+                                               class="btn btn-neutral btn-ico">
+                            <span class="btn-inner--icon"><i class="fas fa-lock"></i></span><span
+                                    class="nav-link-inner--text"> Login</span>
+                        </a>
+                    {/if}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- \::Includes/navigation -->

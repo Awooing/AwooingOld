@@ -1,82 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Awooing</title>
-	<link href="https://fonts.googleapis.com/css2?family=Livvic:wght@100;300;500;700&amp;display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="shortcut icon" href="https://cdn.discordapp.com/emojis/322522663304036352.png?v=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" /><link rel="stylesheet" href="{$baseUrl}/awoo.css">
-	<style>
-		body {
-			background: #333333;
-			margin: 0;
-			font-family: 'Livvic', sans-serif;
-		}
-		h1, h2, h3, h4, h5, h6, p {
-			margin: 0;
-			color: white;
-		}
-		::-webkit-scrollbar {
-			width: 0;
-			background: transparent;
-		}
-
-		.awoo-container {
-			background: #333333;
-			min-height: calc(100vh - 5.5rem);
-			margin-top: 4rem;
-		}
-		.awoo-container:last-child {
-			margin-bottom: 4rem;
-		}
-		.footer {
-			background: #212529;
-			height: 5.5rem;
-			color: white;
-		}
-		.footer p {
-			text-align: center;
-			padding-top: 2rem
-		}
-		a {
-			color: white;
-			text-decoration: none;
-			border-bottom: 1px dotted gray;
-		}
-		a:hover {
-			color: white;
-			text-decoration: none;
-		}
-	</style>
+	<title n:snippet="title">{ifset title}{include title|stripHtml} &ndash; {/ifset}Awooing.moe</title>
+	{include './Includes/head.latte'}
 </head>
 
-<body>
-	<div class="container awoo-container">
+{snippet login}
+	{if !$user->isLoggedIn()}
+		{include './Includes/loginModal.latte'}
+	{/if}
+{/snippet}
 
-		{ifset title}
-			<div class="awoo-wrapper" style="background: rgba(0,0,0,0.2);padding: 2rem;border-radius: 2rem;margin-top: 2rem">
-				<h2 style="text-align:center;color: white;font-weight: 700;">{include title|stripHtml}</h2>
+<body class="index-page bg-dark">
+
+{snippet navigation}{include './Includes/navigation.latte'}{/snippet}
+
+<div class="awoo-container" >
+
+	<!-- ::Banner -->
+	<div class="section section-hero section-shaped" id="awoo-banner">
+		<div class="shape shape-style-1 shape-primary awoo-banner-gradient">
+		</div>
+		<div class="page-header">
+			<div class="container shape-container d-flex align-items-center py-lg">
+				<div class="col px-0">
+					<!-- TODO: in-file -->
+					<style>
+						h1.welcome .awoo:first-child {
+							height: 2rem;
+						}
+					</style>
+					<h1 n:snippet="banner" class="welcome" style="margin:0;">{ifset title}{include title|stripHtml}{else}The Awooing Place{/ifset}</h1>
+				</div>
 			</div>
-		{/ifset}
-
-		{block content}{/block}
+		</div>
 	</div>
+	<!-- \::Banner -->
+	{snippet content}
+		<div id="main-container" class="container">
+
+			<!-- TODO: cleanup flashes -->
+			<!-- Flashes -->
+			<div class="flashes">
+				{foreach $flashes as $flash}
+					{if $flash->type == "script"}
+						{$flash->message|noescape}
+					{else}
+						<div n:class="flash">
+							{if $flash->type == "noescape"}
+								<div class="flash-header">
+									<p>{explode(";", $flash->message)[0]}</p>
+								</div>
+								<div class="flash-body">
+									<b>{explode(";", $flash->message)[1]}</b> {explode(";", $flash->message|noescape)[2]}
+								</div>
+							{else}
+								<div n:class="flash-header, $flash->type">
+									<p>{explode(";", $flash->message)[0]}</p>
+								</div>
+								<div class="flash-body">
+									<p style="margin: 0"><b id="flash-date">{explode(";", $flash->message)[1]}</b> {explode(";", $flash->message)[2]}</p>
+								</div>
+							{/if}
+						</div>
+					{/if}
+				{/foreach}
+				<!-- todo: add announcements back, only on homepage presenter... tysm-->
+				<!-- /Flashes -->
+			</div>
 
 
+			<!-- ::so here we start -->
+			{include content}
+			<!-- \::so here we end -->
+		</div>
+	{/snippet}
+</div>
 
-	<footer class="footer">
-		<p>Awooing.moe &bullet; <a href="https://discord.gg/wolke">Join the Poi Community</a></p>
-	</footer>
-
-	{block scripts}
-		<script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-		{ifset js}{include js}{/ifset}
-	{/block}
+{include './Includes/footer.latte'}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="{$baseUrl}/js/naja/Naja.js"></script>
+<script src="{$baseUrl}/js/main.js"></script>
+<script src="{$baseUrl}/assets/js/core/popper.min.js" type="text/javascript"></script>
+<script src="{$baseUrl}/assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+<script src="{$baseUrl}/assets/js/argon-design-system.min.js?v=1.2.0" type="text/javascript"></script>
+{snippet js}
+	{ifset js}{include js}{/ifset}
+{/snippet}
 </body>
+
 </html>

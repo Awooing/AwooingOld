@@ -5,3 +5,10 @@ database:
 	dsn: 'mysql:host=localhost;dbname=awoo'
 	user: awoo
 	password: aw00isL1fe
+
+services:
+    authenticator: Awoo\Auth\Authentication
+    - Awoo\Models\VotingModel
+    - Awoo\Models\UserModel
+    - Awoo\Models\MainModel
+    - Awoo\Auth\Authorization::awooThePerms()

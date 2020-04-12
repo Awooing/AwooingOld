@@ -1,0 +1,46 @@
+{block title}Council Election{/block}
+{block content}
+    <div class="awoo-wrapper no-padding">
+            <div class="awoo-poll">
+                <p>Tokichii:</p>
+                <div class="progress">
+                    <div id="tokiVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                </div>
+                <p>Rin:</p>
+                <div class="progress">
+                    <div id="rinVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                </div>
+                <p>Vocktile:</p>
+                <div class="progress">
+                    <div id="vockVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                </div>
+                <p>Spaghett:</p>
+                <div class="progress">
+                    <div id="spaghettVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                </div>
+                <p>Muffin:</p>
+                <div class="progress">
+                    <div id="muffinVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                </div>
+                <p>Vottus:</p>
+                <div class="progress">
+                    <div id="vottusVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                </div>
+
+                <h2>Total Votes: <span id="total">Loading...</span> {awooo}</h2>
+                <div class="progress">
+                    <div id="tokiVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                    <div id="rinVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                    <div id="vockVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                    <div id="spaghettVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                    <div id="muffinVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                    <div id="vottusVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                </div>
+            </div>
+    </div>
+
+{/block}
+
+{block js}
+    <script src="{$baseUrl}/js/update.js"></script>
+{/block}

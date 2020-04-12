@@ -1,0 +1,40 @@
+{block title}Welcome to the Admin Panel, {$user->identity->username} {/block}
+{block content}
+    {if $user->isLoggedIn()}
+        {if $user->isAllowed("admin", "view")}
+            <div class="awoo-wrapper" style="color: white;">
+                <div class="dropdown">
+                    <a class="btn btn-primary dropdown-toggle" id="tabs-text-1-tab" type="button" id="dropNews" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">News</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item ajax" n:href="Admin:createPost">Create New Post</a>
+                        <a class="dropdown-item ajax" n:href="Admin:listPosts">List Posts</a>
+                        <a class="dropdown-item ajax" n:href="Admin:postTags">Post Tags</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="btn btn-primary dropdown-toggle" id="tabs-text-1-tab" type="button" id="dropUsers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item ajax" n:href="Admin:listUsers">List Users</a>
+                        <a class="dropdown-item ajax" n:href="Admin:findUser">Find User</a>
+                        <a class="dropdown-item ajax" n:href="Admin:findUser">Ban User</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a class="btn btn-primary dropdown-toggle" id="tabs-text-1-tab" type="button" id="dropUsers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Awoos</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item ajax" n:href="Admin:listUsers">List Users</a>
+                        <a class="dropdown-item ajax" n:href="Admin:findUser">Find User</a>
+                        <a class="dropdown-item ajax" n:href="Admin:findUser">Ban User</a>
+                    </div>
+                </div>
+            </div>
+            <div class="awoo-wrapper" style="min-height: 20rem">
+                <h2 style="color: white;font-weight: bold;">Welcome to the Admin Panel.</h2>
+                <h5 style="color: var(--gray)">
+                    You have been given permission to access this place,
+                    <br/>this means that someone put trust in you.
+                    <br/><br/>Don't let that person down.</h5>
+            </div>
+        {/if}
+    {/if}
+{/block}
