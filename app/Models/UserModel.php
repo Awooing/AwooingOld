@@ -1,6 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace Awoo\Models;
+
+/**
+ * This file is part of Awooing.moe
+ */
 
 use Latte\Engine;
 use Nette\Database\Context;
@@ -21,6 +26,10 @@ class UserModel
     /** @var SmtpMailer */
     private $mailer;
 
+    /**
+     * UserModel constructor.
+     * @param Context $db
+     */
     public function __construct(Context $db)
     {
         $this->database = $db;
@@ -33,6 +42,14 @@ class UserModel
         ]);
     }
 
+    /**
+     * This method checks if the login IP
+     * matches with the current IP address.
+     * This is a precaution against Session Hijacking
+     * @param Session $session
+     * @param User $user
+     * @return bool|null
+     */
     public function checkSession(Session $session, User $user): ?bool
     {
         if ($user->isLoggedIn()) {
@@ -47,10 +64,24 @@ class UserModel
             return null;
         }
     }
+
+    /**
+     * Gets user with id in param $id,
+     * or returns null if user doesn't exist
+     * @param $id
+     * @return ActiveRow|null
+     */
     public function getUser($id): ?ActiveRow {
         return $this->database->table("awoo_users")->get($id);
     }
 
+    /**
+     * Checks if user is banned, returns
+     * either true or false, in case the user
+     * doesn't exist it returns null
+     * @param $id
+     * @return bool|null
+     */
     public function isUserBanned($id): ?bool {
         $user = $this->getUser($id);
         if (!$user) {
@@ -62,15 +93,27 @@ class UserModel
             return false;
         }
     }
+
+    /**
+     * Checks if the IP from param $ip is banned.
+     * @param $ip
+     * @return bool
+     */
     public function isIPBanned($ip): bool {
-        $query = $this->database->table("awoo_banned_ip")->where("address = ?", $ip);
+        /*$query = $this->database->table("awoo_banned_ip")->where("address === ?", $ip);
         if (!$query) {
             return true;
         } else {
             return false;
-        }
+        }*/
     }
 
+    /**
+     * Signs out the user and destroys the session.
+     * @param Session $session
+     * @param User $user
+     * @return bool
+     */
     public function logout(Session $session, User $user): bool
     {
         if ($user->isLoggedIn()) {
@@ -82,14 +125,33 @@ class UserModel
         }
     }
 
+    /**
+     * Gets user by username,
+     * or returns null if user doesn't exist
+     * @param string $username
+     * @return ActiveRow|null
+     */
     public function getUserByName(string $username): ?ActiveRow {
         return $this->database->table("awoo_users")->where("username = ?", $username)->fetch();
     }
-    
+
+    /**
+     * Gets user by email,
+     * or returns null if user doesn't exist
+     * @param string $email
+     * @return ActiveRow|null
+     */
     public function getUserByEmail(string $email): ?ActiveRow {
         return $this->database->table("awoo_users")->where("email = ?", $email)->fetch();
     }
-    
+
+    /**
+     * Sends verification email to email in param $to,
+     * assigns verification code to user id from param $userId.
+     * Used in registration process.
+     * @param string $to
+     * @param $userId
+     */
     public function sendVerifyEmail(string $to, $userId)
     {
         $latte = new Engine;
@@ -110,6 +172,17 @@ class UserModel
         $this->mailer->send($email);
     }
 
+
+    /**
+     * Verifies the account, returns JSON
+     * with error: success if succeeded or returns error.
+     * It checks if the account matches the code and action.
+     * @param string $a
+     * @param string $c
+     * @param string $ac
+     * @return string
+     * @throws \Nette\Utils\JsonException
+     */
     public function verifyUser(string $a, string $c, string $ac): string
     {
         if ($a == null || $c == null || $ac == null) { return Json::encode(["error"=>"x1_varnull"]); }

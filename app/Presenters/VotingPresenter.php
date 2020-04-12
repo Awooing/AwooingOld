@@ -1,6 +1,9 @@
 <?php
-
 declare(strict_types=1);
+
+/**
+ * This file is part of Awooing.moe
+ */
 
 namespace App\Presenters;
 
@@ -28,6 +31,10 @@ class VotingPresenter extends BasePresenter {
         $this->model = $model;
     }
 
+    /**
+     * Gets applicants from VotingModel,
+     * adds it to the template
+     */
     public function actionApplicants(): void
     {
         $this->template->applicants = $this->model->voting->getApplicantSpeeches();

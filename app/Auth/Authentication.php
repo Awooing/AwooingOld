@@ -1,4 +1,8 @@
 <?php
+declare(strict_types=1);
+/**
+ * This file is part of Awooing.moe
+ */
 
 namespace Awoo\Auth;
 
@@ -21,6 +25,12 @@ class Authentication implements IAuthenticator {
     /** @var Session **/
     private $session;
 
+    /**
+     * Authentication constructor.
+     * @param Context $db
+     * @param Passwords $pw
+     * @param Session $sess
+     */
     public function __construct(Context $db, Passwords $pw, Session $sess)
     {
         $this->database = $db;
@@ -28,6 +38,12 @@ class Authentication implements IAuthenticator {
         $this->session = $sess;
     }
 
+    /**
+     * Processing authentication.
+     * @param array $credentials
+     * @return IIdentity
+     * @throws AuthenticationException
+     */
     public function authenticate(array $credentials): IIdentity
     {
         [$username, $password] = $credentials;

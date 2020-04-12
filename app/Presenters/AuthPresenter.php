@@ -1,7 +1,13 @@
 <?php
+declare(strict_types=1);
+
+/**
+ * This file is part of Awooing.moe
+ */
 
 namespace App\Presenters;
 use Awoo\Models\MainModel;
+use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 use Nette\Database\Context;
 use Nette\Security\Passwords;
@@ -31,6 +37,12 @@ class AuthPresenter extends BasePresenter
         $this->passwords = $pw;
     }
 
+    /**
+     * Logout Action,
+     * calls method logout($sess, $user) in UserModel,
+     * redirects to Homepage
+     * @throws AbortException
+     */
     public function actionLogout(): void
     {
         if ($this->model->user->logout($this->getSession(), $this->getUser())) {
@@ -41,6 +53,10 @@ class AuthPresenter extends BasePresenter
         $this->redirect("Homepage:default");
     }
 
+    /**
+     * Register Component
+     * @return Form
+     */
     protected function createComponentRegister(): Form
     {
         $form = new Form();
@@ -62,6 +78,12 @@ class AuthPresenter extends BasePresenter
         return $form;
     }
 
+    /**
+     * Processes Registering
+     * @param Form $f
+     * @param \stdClass $vo
+     * @throws AbortException
+     */
     public function processRegister(Form $f, \stdClass $vo): void
     {
         if (!$this->model->user->getUserByName($vo->username)) {

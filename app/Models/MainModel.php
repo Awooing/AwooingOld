@@ -1,4 +1,9 @@
 <?php
+declare(strict_types=1);
+
+/**
+ * This file is part of Awooing.moe
+ */
 
 namespace Awoo\Models;
 
@@ -67,7 +72,9 @@ class MainModel
     }
 
     /**
-     * Login Processing
+     * Login Processing,
+     * returns string meant to be flashed as script,
+     * in which is a SweetAlert with result.
      * @param Session $session
      * @param User $user
      * @param stdClass $vo
