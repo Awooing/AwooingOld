@@ -1,0 +1,17 @@
+{block content}
+
+    {var $eachCount = 0}
+
+    <div class="awoo-wrapper">
+        <h1 style="font-weight: bold;font-size: 2rem;margin-bottom: 2rem;">The Voting for The New Awoo Council has ended!</h1>
+        <h5 style="text-align:center;font-size: 1.4rem">Following candidates has been elected into the New Awoo Council:</h5>
+        <h5 style="text-align-last: center">
+            {foreach $votes as $vote}
+                {php $eachCount++}
+                {if $eachCount <= 5}
+                    {$vote->applicant|firstUpper}{if $eachCount != 5},{/if}
+                {/if}
+            {/foreach}
+        </h5>
+    </div>
+{/block}

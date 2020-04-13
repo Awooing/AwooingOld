@@ -8,6 +8,7 @@ declare(strict_types=1);
 namespace App\Presenters;
 
 use Awoo\Models\MainModel;
+use Cassandra\Date;
 use Nette\Database\Context;
 
 
@@ -35,6 +36,12 @@ class VotingPresenter extends BasePresenter {
     {
         $this->template->votes = $this->model->voting->getApplicantVotes()->order("votes DESC");
         $this->template->votesAsc = $this->model->voting->getApplicantVotes()->order("votes ASC");
+
+        $dateEnd = new \DateTime("2020-04-14");
+        $dateNow = new \DateTime();
+        if ($dateEnd < $dateNow) {
+            $this->template->setFile("../app/Presenters/templates/donevote.latte");
+        }
     }
 
     /**

@@ -2,9 +2,9 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=127.0.0.1;dbname=awoo'
+	dsn: 'mysql:host=localhost;dbname=awoo'
 	user: awoo
-	password: aw00forL1fe
+	password: aw00isL1fe
 
 services:
     authenticator: Awoo\Auth\Authentication
