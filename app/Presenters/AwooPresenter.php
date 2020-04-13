@@ -10,7 +10,7 @@ class AwooPresenter extends BasePresenter
 
     public function actionGet(): void
     {
-        $awoos = scandir("./static/img/randawoos");
+                $awoos = scandir("./static/img/randawoos");
         if ($awoos === null || !$awoos) {
             $json = array("error"=>"not_found");
         } else {

@@ -9,6 +9,7 @@ h2#title-homepage {
     color: white;
     font-family: 'Livvic', sans-serif;
     font-weight: 600;
+    margin-top: 1rem;
 }
 .awoo-container {
     min-height: calc(100vh - 4.6rem);
@@ -111,6 +112,12 @@ div.awoo-wrapper div.awoo-poll div.progress {
 div.awoo-wrapper table.table th,td {
     border-top: 0.125rem solid var(--gray-dark) !important;
     border-bottom: 0.125rem solid var(--gray-dark) !important;
+}
+nav#navbar-main .nav-link {
+    padding-right: 0 !important;
+}
+nav#navbar-main .tag {
+    font-size: 0.9rem;
 }
 /*** Flashes ***/
 .flash {

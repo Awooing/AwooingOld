@@ -29,6 +29,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a n:href="Council:default" class="nav-link">
+                        <span class="nav-link-inner--text">Council <span class="tag orange" style="margin: 0">Ongoing election</span></span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a n:href="Awoo:random" class="nav-link">
                         <span class="nav-link-inner--text">Awoo Pics</span>
                     </a>
@@ -51,7 +56,7 @@
                                 {$user->getIdentity()->username}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item ajax" n:href="Homepage:awoos" >Go Awoo</a>
+                                <a class="dropdown-item ajax disabled" n:href="Homepage:awoos" >Go Awoo</a>
                                 {if $user->isAllowed("admin", "view")}<a class="dropdown-item ajax" n:href="Admin:default">Admin Panel</a>{/if}
                                 <a class="dropdown-item ajax" n:href="Auth:logout">Logout</a>
                             </div>

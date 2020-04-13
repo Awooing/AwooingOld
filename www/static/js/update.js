@@ -48,7 +48,7 @@ function setVote(bar, total, percent, votes, name) {
     bar.text( votes + correctS(votes));
     total.attr("style", "width:" + percent + "%");
     total.attr("aria-valuenow", percent);
-    total.text(name + " (" + votes + correctS(votes) + ")");
+    total.text(name + " (" + votes + ")");
 }
 
 update();

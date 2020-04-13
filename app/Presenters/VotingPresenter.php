@@ -31,6 +31,12 @@ class VotingPresenter extends BasePresenter {
         $this->model = $model;
     }
 
+    public function actionDefault():void
+    {
+        $this->template->votes = $this->model->voting->getApplicantVotes()->order("votes DESC");
+        $this->template->votesAsc = $this->model->voting->getApplicantVotes()->order("votes ASC");
+    }
+
     /**
      * Gets applicants from VotingModel,
      * adds it to the template

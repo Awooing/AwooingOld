@@ -1,46 +1,68 @@
 {block title}Council Election{/block}
 {block content}
-    <div class="awoo-wrapper no-padding">
+    <style>
+        div.progress div#tokiVotesTotal {
+            background-color: var(--primary);
+        }
+        div.progress div#rinVotesTotal {
+            background-color: var(--warning);
+        }
+        div.progress div#vockVotesTotal {
+            background-color: var(--success);
+        }
+        div.progress div#spaghettVotesTotal {
+            background-color: var(--danger);
+        }
+        div.progress div#muffinVotesTotal {
+            background-color: var(--gray);
+        }
+        div.progress div#vottusVotesTotal {
+            background-color: var(--info);
+        }
+        .awoo-poll .top-wrapper {
+            background: var(--green);
+            padding: 8px 12px;
+            margin: 0;
+        }
+        div.vote-wrapper {
+            padding: 8px 12px;
+        }
+        div.awoo-poll div.top-wrapper:first-of-type {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        div.awoo-poll div.top-wrapper:nth-child(5) {
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+    </style>
+
+    <div class="awoo-wrapper">
             <div class="awoo-poll">
-                <p>Tokichii:</p>
-                <div class="progress">
-                    <div id="tokiVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                </div>
-                <p>Rin:</p>
-                <div class="progress">
-                    <div id="rinVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                </div>
-                <p>Vocktile:</p>
-                <div class="progress">
-                    <div id="vockVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                </div>
-                <p>Spaghett:</p>
-                <div class="progress">
-                    <div id="spaghettVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                </div>
-                <p>Muffin:</p>
-                <div class="progress">
-                    <div id="muffinVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                </div>
-                <p>Vottus:</p>
-                <div class="progress">
-                    <div id="vottusVotes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                </div>
+                {var $eachCount = 0}
+                {foreach $votes as $vote}
+                    {php $eachCount++}
+                    <div n:tag-if="$eachCount <= 5" class="top-wrapper">
+                        <div n:tag-if="$eachCount > 5" class="vote-wrapper">
+                            <p>{$vote->applicant|firstUpper}:</p>
+                            <div class="progress">
+                                <div id="{$vote->applicant}Votes" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">{$vote->applicant|firstUpper} ({$vote->votes})</div>
+                            </div>
+                        </div>
+                    </div>
+                {/foreach}
+
 
                 <h2>Total Votes: <span id="total">Loading...</span> {awooo}</h2>
                 <div class="progress">
-                    <div id="tokiVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                    <div id="rinVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-secondary" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                    <div id="vockVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                    <div id="spaghettVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                    <div id="muffinVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
-                    <div id="vottusVotesTotal" class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
+                    <div n:foreach="$votesAsc as $vote" id="{$vote->applicant}VotesTotal" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100">Loading...</div>
                 </div>
             </div>
+        <p style="text-align: center">The New Awoo Council will be formed from the 5 most voted people. Those are colored green.</p>
     </div>
 
 {/block}
 
 {block js}
-    <script src="{$baseUrl}/js/update.js"></script>
+    <script src="{$baseUrl}/static/js/update.js"></script>
 {/block}

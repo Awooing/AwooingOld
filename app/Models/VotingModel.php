@@ -40,4 +40,8 @@ class VotingModel {
         return $this->getApplicantSpeeches()->where("name = ?", $applicant);
     }
 
+    public function getApplicantVotes(): ?Selection {
+        return $this->database->table("awoo_votes");
+    }
+
 }

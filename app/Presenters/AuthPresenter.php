@@ -86,6 +86,9 @@ class AuthPresenter extends BasePresenter
      */
     public function processRegister(Form $f, \stdClass $vo): void
     {
+        if ($this->getUser()->isLoggedIn()) {
+            $this->redirect("Homepage:default");
+        }
         if (!$this->model->user->getUserByName($vo->username)) {
             if (!$this->model->user->getUserByEmail($vo->email)) {
                 $user = $this->database->table("awoo_users")->insert([

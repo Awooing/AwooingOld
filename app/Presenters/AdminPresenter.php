@@ -57,6 +57,14 @@ class AdminPresenter extends BasePresenter
      */
     public function actionListPosts(): void
     {
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->error("Unauthorized", 401);
+        } else {
+            if (!$this->getUser()->isAllowed("admin", "view")) {
+                $this->error("Unauthorized", 401);
+            }
+        }
+
         $this->template->posts = $this->model->news->getArticles();
         $this->template->delUrl = $this->link("Admin:deletePost");
         $this->template->users = $this->model->user->getUsers();
@@ -64,6 +72,14 @@ class AdminPresenter extends BasePresenter
 
     public function actionEditPost($id): void
     {
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->error("Unauthorized", 401);
+        } else {
+            if (!$this->getUser()->isAllowed("news", "edit")) {
+                $this->error("Unauthorized", 401);
+            }
+        }
+
         if ($id === null || !$id) {
             $this->error("Page Not Found", 404);
         }
@@ -76,6 +92,14 @@ class AdminPresenter extends BasePresenter
 
     public function actionDeletePost($p): void
     {
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->error("Unauthorized", 401);
+        } else {
+            if (!$this->getUser()->isAllowed("news", "delete")) {
+                $this->error("Unauthorized", 401);
+            }
+        }
+
         if ($p === null || !$p) {
             $this->error("Page Not Found", 404);
         }
@@ -118,12 +142,27 @@ class AdminPresenter extends BasePresenter
      */
     public function processPost(Form $f, array $v): void
     {
+
         $postId = $this->getParameter('id');
         if ($postId) {
+            if (!$this->getUser()->isLoggedIn()) {
+                $this->error("Unauthorized", 401);
+            } else {
+                if (!$this->getUser()->isAllowed("news", "edit")) {
+                    $this->error("Unauthorized", 401);
+                }
+            }
             $post = $this->database->table("awoo_posts")->get($postId);
             $post->update($v);
             $this->flashMessage('<script id="script">Swal.fire({title:"Success", text:"The post was edited successfully.", icon:"success"});</script>', "script");
         } else {
+            if (!$this->getUser()->isLoggedIn()) {
+                $this->error("Unauthorized", 401);
+            } else {
+                if (!$this->getUser()->isAllowed("news", "create")) {
+                    $this->error("Unauthorized", 401);
+                }
+            }
             $v['user_id'] = $this->getUser()->getIdentity()->getId();
             $post = $this->database->table("awoo_posts")->insert($v);
             $this->flashMessage('<script id="script">Swal.fire({title:"Success", text:"The post was created successfully.", icon:"success"});</script>', "script");
