@@ -3,7 +3,39 @@
     <style>
     </style>
     <h4 id="wrapper-pop">Posted by {$author->showAs} &ndash; {$news->created_at|date:"d/m/Y"}</h4>
-    <div class="awoo-wrapper" style="margin-bottom: 4rem;color: white;margin-top: 0">
+    <div class="awoo-wrapper" style="margin-bottom: 1rem;color: white;margin-top: 0">
         {$news->content|noescape|awooIt}
     </div>
+
+        <h1 style="color: var(--white);text-align: left;margin: 0 0 0.6rem;">Comments</h1>
+        {if $user->isAllowed("comments", "view")}
+            {foreach $comments as $comment}
+                <div id="awoo-comment-block" style="align-items: flex-start;display: flex;text-align: left;background: rgba(0,0,0,0.18);padding: 1rem;border-radius: 2rem;color: white;">
+                    <img style="height: 4rem;border-radius: 6rem" src="{$users->getUser($comment->author)->profile_picture}">
+                    <div id="awoo-comment-inner" style="margin-left: 1rem;color:white;">
+                        <h3 style="font-size: 0.9rem;color: gray;margin: 0">{$comment->created_at|date:'m/d/Y'}</h3>
+                        <p style="font-size: 1.2rem;color: white;margin: 0">{$users->getUser($comment->author)->showAs} <span style="font-weight: 100">wrote:</span></p>
+                        <h3 style="font-size: 0.9rem;color: gray;">{$comment->content}</h3>
+                    </div>
+                </div>
+            {/foreach}
+        {else}
+            <div class="awoo-wrapper">
+                <h2 style="text-align: center;background: var(--red);font-weight: normal;font-size: 20px;padding: 10px;border-radius: 4px;margin: 0">You are not allowed to view comments.</h2>
+            </div>
+        {/if}
+        <h1 style="color: var(--white);text-align: left;margin: 1rem 0 0.6rem;">Write a comment</h1>
+        {if !$user->isLoggedIn()}
+            <div class="awoo-wrapper" style="margin: 0 0 3rem;">
+                <h2 data-toggle="modal" data-target="#modal-form" style="text-align: center;background: var(--red);font-weight: normal;font-size: 20px;padding: 10px;border-radius: 4px;margin: 0">You need to be logged in in order to comment.</h2>
+            </div>
+        {else}
+            <div class="awoo-wrapper" style="margin: 0 0 3rem;">
+                {if $user->isAllowed("comments", "create")}
+                    {control comment}
+                {else}
+                    <h2 style="text-align: center;background: var(--red);font-weight: normal;font-size: 20px;padding: 10px;border-radius: 4px;margin: 0">You are not allowed to post comments.</h2>
+                {/if}
+            </div>
+        {/if}
 {/block}

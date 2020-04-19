@@ -105,5 +105,10 @@ class BasePresenter extends Nette\Application\UI\Presenter {
      */
     public function processLogin(Nette\Application\UI\Form $f, \stdClass $vo) {
         $this->flashMessage($this->model->login($this->getSession(), $this->getUser(), $vo), "script");
+        if ($this->getUser()->isLoggedIn()) {
+            if ($this->model->user->isUserBanned($this->getUser()->id)) {
+                $this->template->setFile("../app/Presenters/templates/banned.latte");
+            }
+        }
     }
 }

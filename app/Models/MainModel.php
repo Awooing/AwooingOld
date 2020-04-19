@@ -33,6 +33,9 @@ class MainModel
     /** @var NewsModel */
     public $news;
 
+    /** @var CdnModel */
+    public $cdn;
+
     /**
      * MainModel constructor.
      * @param Context $db
@@ -40,14 +43,16 @@ class MainModel
      * @param VotingModel $vote
      * @param UserModel $user
      * @param NewsModel $news
+     * @param CdnModel $cdn
      */
-    public function __construct(Context $db, Passwords $pw, VotingModel $vote, UserModel $user, NewsModel $news)
+    public function __construct(Context $db, Passwords $pw, VotingModel $vote, UserModel $user, NewsModel $news, CdnModel $cdn)
     {
         $this->database = $db;
         $this->passwords = $pw;
         $this->voting = $vote;
         $this->user = $user;
         $this->news = $news;
+        $this->cdn = $cdn;
     }
 
     /* Components */

@@ -1,11 +1,13 @@
 {block title}The Awoo Council{/block}
 
 {block content}
-    <div style="text-align: center !important;" class="awoo-wrapper">
-        <h2 style="text-align: center">New Awoo Council is about to be elected!</h2>
-        <h5>We are in a big need for a council, therefore a voting had begun.</h5>
-        <br/><br/>
-
-        <h5>For more information read <a class="ajax" n:href="News:view 1">this post</a>.</h5>
-    </div>
+    {foreach $council as $member}
+        <div class="council-block" style="align-items: flex-start;display: flex;text-align: left;margin: 1rem;background: rgba(0,0,0,0.3);padding: 1rem;border-radius: 2rem;color: white;">
+            <img style="border-radius: 4rem;min-height: 128px" src="{$member->image}" alt="{$member->name}">
+            <div style="margin-left: 1rem;color:white">
+                <h4 style="margin: 0">{$member->name} <span style="font-size: 0.8rem">{$member->position}</span></h4>
+                <h3 style="font-size: .9rem;color: gray">{$member->about|noescape|awooIt}</h3>
+            </div>
+        </div>
+    {/foreach}
 {/block}

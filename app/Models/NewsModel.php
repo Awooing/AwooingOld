@@ -33,7 +33,7 @@ class NewsModel
      */
     public function getArticles(): ?Selection
     {
-        return $this->database->table("awoo_posts");
+        return $this->database->table("awoo_posts")->order("created_at DESC");
     }
 
     /**

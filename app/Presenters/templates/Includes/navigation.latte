@@ -19,27 +19,27 @@
             </div>
             <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                 <li class="nav-item">
-                    <a n:href="Homepage:default" class="nav-link">
+                    <a n:href="Homepage:default" class="nav-link ajax">
                         <span class="nav-link-inner--text">Home</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a n:href="News:default" class="nav-link">
+                    <a n:href="News:default" class="nav-link ajax">
                         <span class="nav-link-inner--text">News</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a n:href="Council:default" class="nav-link">
-                        <span class="nav-link-inner--text">Council <span class="tag orange" style="margin: 0">Ongoing election</span></span>
+                    <a n:href="Council:default" class="nav-link ajax">
+                        <span class="nav-link-inner--text">Council</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a n:href="Awoo:random" class="nav-link">
+                    <a n:href="Awoo:random" class="nav-link ajax">
                         <span class="nav-link-inner--text">Awoo Pics</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://discord.gg/wolke" class="nav-link">
+                    <a href="https://discord.gg/wolke" class="nav-link ajax">
                         <span class="nav-link-inner--text">Discord</span>
                     </a>
                 </li>
@@ -48,12 +48,12 @@
                 <li class="nav-item">
                     {if $user->isLoggedIn()}
                         <div class="dropdown">
-                            <button class="btn btn-neutral dropdown-toggle" type="button" id="dropdownMenuButton"
+                            <button class="btn btn-neutral dropdown-toggle"  style="text-transform: unset" type="button" id="dropdownMenuButton"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 {if $user->getIdentity()->role === "council"}
-                                    <span style="font-size: 14px;color: white;padding: 4px;background: var(--red);border-radius: 6px;margin-right: 6px">ADMIN</span>
+                                    <span style="font-size: 14px;color: white;padding: 4px;background: var(--red);border-radius: 4px;margin-right: 6px;text-transform: capitalize">Council</span>
                                 {/if}
-                                {$user->getIdentity()->username}
+                                {$user->getIdentity()->showAs}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item ajax disabled" n:href="Homepage:awoos" >Go Awoo</a>

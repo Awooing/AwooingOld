@@ -53,6 +53,17 @@ class AuthPresenter extends BasePresenter
         $this->redirect("Homepage:default");
     }
 
+    public function actionVerify($a, $c, $ac): void
+    {
+        $result = json_decode($this->model->user->verifyUser($a, $c, $ac));
+        if ($result->error === "success") {
+            $this->flashMessage('<script id="script">Swal.fire({title:"Success",text:"Your account has been successfully verified!",icon: "success",showConfirmButton:false, showCancelButton:false, timer:1250, timerProgressBar:true});("#script").remove();</script>', "script");
+        } else {
+            $this->flashMessage("'<script id='script'>Swal.fire({title:'Invalid verify link',text:'The link you try to use is invalid. Error code $result->error',icon: 'warning', confirmButtonText: 'Okay', showCancelButton:false});('#script').remove();</script>'", "script");
+        }
+        $this->redirect("Homepage:default");
+    }
+
     /**
      * Register Component
      * @return Form
@@ -98,7 +109,10 @@ class AuthPresenter extends BasePresenter
                     "showAs" => $vo->username,
                     "role" => "member",
                     "active" => "0",
-                    "banned" => "0"
+                    "banned" => "0",
+                    "profile_picture"=>"https://via.placeholder.com/150",
+                    "banner"=>"none",
+                    "location"=>"unset"
                 ]);
                 $this->model->user->sendVerifyEmail($vo->email, $user->id);
                 $this->flashMessage('<script id="script983346418551_register">Swal.fire({title:"Success", text:"You have been registered successfully", icon:"success"}).then(() => {Swal.fire({title:"Verify your email",text:"You need to verify your email before logging in.",icon: "warning", iconHtml:"<i class=\'far fa-envelope\' style=\'font-size:3rem;\'></i>", confirmButtonText: "Okay", showCancelButton:false});}); $("#script983346418551_register").remove();</script>', "script");
@@ -110,8 +124,4 @@ class AuthPresenter extends BasePresenter
             $f->addError("This username is already used.");
         }
     }
-
-
-
-
 }

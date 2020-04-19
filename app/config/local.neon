@@ -2,9 +2,9 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=localhost;dbname=awoo'
-	user: awoo
-	password: aw00isL1fe
+	dsn: 'mysql:host=s2.kettlemc.net;dbname=awoo'
+	user: vottus
+	password: aw009%SW3#3t9F^rYKr6@
 
 services:
     authenticator: Awoo\Auth\Authentication
@@ -12,4 +12,5 @@ services:
     - Awoo\Models\UserModel
     - Awoo\Models\MainModel
     - Awoo\Models\NewsModel
+    - Awoo\Models\CdnModel
     - Awoo\Auth\Authorization::awooThePerms()

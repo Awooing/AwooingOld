@@ -200,6 +200,16 @@ class UserModel
     }
 
     /**
+     * Activates the account, no questions asked.
+     * Meaning that it won't check for anything, it will just update the account.
+     * @param string $id
+     */
+    public function activateUser(string $id) {
+        $this->database->table("awoo_users")->get($id)->update(["active" => "1"]);
+    }
+
+
+    /**
      * Gets all users,
      * or returns null if the table
      * doesn't exist or there are no users.

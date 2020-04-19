@@ -29,9 +29,7 @@ class CouncilPresenter extends BasePresenter
 
     public function actionDefault()
     {
-        // TODO: Applicants
+        // me big dumb
+        $this->template->council = $this->database->table("awoo_council")->order("id DESC");
     }
-
-
-
 }

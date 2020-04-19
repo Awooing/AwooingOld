@@ -12,6 +12,7 @@ use Awoo\Models\MainModel;
 use Nette\Application\AbortException;
 use Nette\Application\UI\Form;
 use Nette\Database\Context;
+use Ublaboo\DataGrid\DataGrid;
 
 class AdminPresenter extends BasePresenter
 {
@@ -54,8 +55,11 @@ class AdminPresenter extends BasePresenter
     /**
      * Gets all Posts from NewsModel
      * and adds them to the template
+     * @param int $page
+     * @throws Nette\Application\BadRequestException
+     * @throws Nette\Application\UI\InvalidLinkException
      */
-    public function actionListPosts(): void
+    public function actionListPosts(int $page=1): void
     {
         if (!$this->getUser()->isLoggedIn()) {
             $this->error("Unauthorized", 401);
@@ -65,9 +69,32 @@ class AdminPresenter extends BasePresenter
             }
         }
 
-        $this->template->posts = $this->model->news->getArticles();
+        $news = $this->model->news->getArticles();
+        $lastPage = 0;
+        $this->template->posts = $news->page($page, 10, $lastPage);
+        $this->template->page = $page;
+        $this->template->last = $lastPage;
         $this->template->delUrl = $this->link("Admin:deletePost");
         $this->template->users = $this->model->user->getUsers();
+    }
+
+    public function actionListUsers(int $page=1): void
+    {
+        if (!$this->getUser()->isLoggedIn()) {
+            $this->error("You need to be logged in to perform this action", 401);
+        }
+        if (!$this->getUser()->isAllowed("admin", "view")) {
+            $this->error("Unauthorized", 401);
+        }
+
+        $users = $this->model->user->getUsers();
+        $lastPage = 0;
+        $this->template->users = $users->page($page, 10, $lastPage);
+        $this->template->page = $page;
+        $this->template->last = $lastPage;
+        $this->template->delUrl = $this->link("Admin:deleteUser");
+        $this->template->deacUrl = $this->link("Admin:deactivateUser");
+        $this->template->acUrl = $this->link("Admin:activateUser");
     }
 
     public function actionEditPost($id): void
@@ -138,7 +165,9 @@ class AdminPresenter extends BasePresenter
     /**
      * Processes the New/Edit Forms
      * @param Form $f
-     * @param \stdClass $vo
+     * @param array $v
+     * @throws AbortException
+     * @throws Nette\Application\BadRequestException
      */
     public function processPost(Form $f, array $v): void
     {
@@ -170,4 +199,11 @@ class AdminPresenter extends BasePresenter
         $this->redirect("Admin:listPosts");
     }
 
+    public function createComponentListUsers($name)
+    {
+        $grid = new DataGrid($this, $name);
+
+        $grid->setDataSource($this->database->table("awoo_users"));
+        $grid->addColumnText('username', 'Name');
+    }
 }

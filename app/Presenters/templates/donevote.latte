@@ -9,7 +9,7 @@
             {foreach $votes as $vote}
                 {php $eachCount++}
                 {if $eachCount <= 5}
-                    {$vote->applicant|firstUpper}{if $eachCount != 5},{/if}
+                    {$vote->applicant|firstUpper}{if $eachCount != 5} ({$vote->votes} Votes),{/if}
                 {/if}
             {/foreach}
         </h5>

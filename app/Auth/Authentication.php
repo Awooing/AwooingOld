@@ -54,7 +54,7 @@ class Authentication implements IAuthenticator {
             throw new AuthenticationException("ACC_NOT_FOUND");
         }
 
-        if (!$this->passwords->verify($password, $user->password)) {
+        if (!$this->passwords->verify($password, $password)) {
             throw new AuthenticationException("ACC_WRONG_PASS");
         }
 
@@ -69,6 +69,7 @@ class Authentication implements IAuthenticator {
         return new Nette\Security\Identity($user->id, $user->role, [
             'id'=>$user->id,
             'username'=>$user->username,
+            'showAs'=>$user->showAs,
             'email'=>$user->email,
             'role'=>$user->role,
             'loginIP'=>$_SERVER['REMOTE_ADDR']

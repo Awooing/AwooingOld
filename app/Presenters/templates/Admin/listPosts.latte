@@ -43,5 +43,11 @@
             {/foreach}
             </tbody>
         </table>
+        </table>
+        <p style="text-align: center; margin: 1rem">
+            {if $page > 1} <a n:href="listPosts, 1">First</a> |&nbsp;<a n:href="listPosts, $page-1">Previous</a> |&nbsp;{/if}
+            Page {$page} from {$last}
+            {if $page < $last} |&nbsp;<a n:href="listPosts, $page+1">Next</a> |&nbsp;<a n:href="listPosts, $last">Last</a> {/if}
+        </p>
     </div>
 {/block}

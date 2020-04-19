@@ -7,19 +7,8 @@
             object-fit: contain;
         }
     </style>
-    <script>
-        $.getJSON("{$baseUrl|noescape}/awoo/get", function (data) {
-            if (data.error === undefined) {
-                $("#awoos-loading").remove();
-                $(".awoo-wrapper").append('<img id="awoos-image" alt="We encountered an awooror." src="' + '{$baseUrl|noescape}' + data.path + '">');
-            } else {
-                console.log("(awoos) An error occurred while fetching the random image! JSON:");
-                console.log(data);
-            }
-        });
-    </script>
     <div class="awoo-wrapper" style="text-align-last: center;">
         <p>Every time you refresh the page, you'll see a new {awooo}</p>
-        <h3 id="awoos-loading">Loading awoos....</h3>
+        <img id="awoos-image" alt="We encountered an awooror." src="{$image}">
     </div>
 {/block}

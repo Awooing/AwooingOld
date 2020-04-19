@@ -9,4 +9,10 @@
             {$news->content|noescape|striptags|truncate:200|awooIt} <a style="border-radius: 2rem;margin-top: 4px" class="btn btn-primary float-right ajax" n:href="News:view $news->id">See more</a>
         </div>
     {/foreach}
+
+    <p style="text-align: center; margin: 1rem">
+        {if $page > 1} <a n:href="all, $type, 1">First</a> |&nbsp;<a n:href="all, $type, $page-1">Previous</a> |&nbsp;{/if}
+        Page {$page} from {$last}
+        {if $page < $last} |&nbsp;<a n:href="all, $type, $page+1">Next</a> |&nbsp;<a n:href="all, $type, $last">Last</a> {/if}
+    </p>
 {/block}
