@@ -4,6 +4,11 @@
 <head>
     <title n:snippet="title">{ifset title}{include title|stripHtml} – {/ifset}Awoo Admin</title>
     {include '../Includes/head.latte'}
+    <link rel="stylesheet" type="text/css" href="../bower_components/happy/dist/happy.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/ublaboo-datagrid/assets/datagrid.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/ublaboo-datagrid/assets/datagrid-spinners.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/bootstrap-select/dist/css/bootstrap-select.css">
 </head>
 
 {snippet login}
@@ -73,14 +78,7 @@
                                 <a class="dropdown-item ajax" n:href="Admin:listPosts">List Posts</a>
                             </div>
                         </div>
-                        <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle" id="tabs-text-1-tab" type="button" id="dropUsers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item ajax" n:href="Admin:listUsers">List Users</a>
-                                <a class="dropdown-item ajax" n:href="Admin:findUser">Find User</a>
-                                <a class="dropdown-item ajax" n:href="Admin:findUser">Ban User</a>
-                            </div>
-                        </div>
+                        <a class="btn btn-primary" n:href="Admin:listUsers">Users</a>
                         <div class="dropdown">
                             <a class="btn btn-primary dropdown-toggle disabled" id="tabs-text-1-tab" type="button" id="dropUsers" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Awoos</a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -100,6 +98,7 @@
 </div>
 
 {include '../Includes/footer.latte'}
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="{$baseUrl}/static/js/naja/Naja.js"></script>
 <script src="{$baseUrl}/static/js/main.js"></script>
@@ -109,6 +108,13 @@
 {snippet js}
     {ifset js}{include js}{/ifset}
 {/snippet}
+<script src="../bower_components/happy/dist/happy.js"></script>
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="../bower_components/jquery-ui-sortable/jquery-ui-sortable.js"></script>
+<script src="../bower_components/ublaboo-datagrid/assets/datagrid.js"></script>
+<script src="../bower_components/ublaboo-datagrid/assets/datagrid-instant-url-refresh.js"></script>
+<script src="../bower_components/ublaboo-datagrid/assets/datagrid-spinners.js"></script>
+<script src="../bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
 </body>
 
 </html>

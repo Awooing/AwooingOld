@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+            <ul class="navbar-nav navbar-nav-hover align-items-lg-center shadowed">
                 <li class="nav-item">
                     <a n:href="Homepage:default" class="nav-link ajax">
                         <span class="nav-link-inner--text">Home</span>
@@ -56,6 +56,7 @@
                                 {$user->getIdentity()->showAs}
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item ajax" n:href="Awooers:view $user->id">View Profile</a>
                                 <a class="dropdown-item ajax disabled" n:href="Homepage:awoos" >Go Awoo</a>
                                 {if $user->isAllowed("admin", "view")}<a class="dropdown-item ajax" n:href="Admin:default">Admin Panel</a>{/if}
                                 <a class="dropdown-item ajax" n:href="Auth:logout">Logout</a>

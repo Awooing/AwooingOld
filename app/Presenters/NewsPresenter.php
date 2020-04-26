@@ -44,6 +44,7 @@ class NewsPresenter extends BasePresenter
         $this->template->author = $this->model->user->getUser($post->user_id);
         $this->template->comments = $post->related('comments');
         $this->template->users = $this->model->user;
+        $this->template->discord = $this->model->discord;
 
     }
 

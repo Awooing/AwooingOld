@@ -1,17 +1,17 @@
 [
     {
         "name": "aws/aws-sdk-php",
-        "version": "3.134.8",
-        "version_normalized": "3.134.8.0",
+        "version": "3.135.2",
+        "version_normalized": "3.135.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/aws/aws-sdk-php.git",
-            "reference": "8a9b598a0ede2165be5988899dcebead6fcc4d41"
+            "reference": "1810725052836683d0cfd2907d515173058e710e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8a9b598a0ede2165be5988899dcebead6fcc4d41",
-            "reference": "8a9b598a0ede2165be5988899dcebead6fcc4d41",
+            "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/1810725052836683d0cfd2907d515173058e710e",
+            "reference": "1810725052836683d0cfd2907d515173058e710e",
             "shasum": ""
         },
         "require": {
@@ -46,7 +46,7 @@
             "ext-openssl": "Allows working with CloudFront private distributions and verifying received SNS messages",
             "ext-sockets": "To use client-side monitoring"
         },
-        "time": "2020-04-17T18:11:57+00:00",
+        "time": "2020-04-22T18:11:15+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -150,25 +150,154 @@
         ]
     },
     {
-        "name": "guzzlehttp/guzzle",
-        "version": "6.5.2",
-        "version_normalized": "6.5.2.0",
+        "name": "contributte/oauth2-client",
+        "version": "v0.2.0",
+        "version_normalized": "0.2.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/guzzle/guzzle.git",
-            "reference": "43ece0e75098b7ecd8d13918293029e555a50f82"
+            "url": "https://github.com/contributte/oauth2-client.git",
+            "reference": "100be8161790baab12c8f18654a912555a07a257"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/43ece0e75098b7ecd8d13918293029e555a50f82",
-            "reference": "43ece0e75098b7ecd8d13918293029e555a50f82",
+            "url": "https://api.github.com/repos/contributte/oauth2-client/zipball/100be8161790baab12c8f18654a912555a07a257",
+            "reference": "100be8161790baab12c8f18654a912555a07a257",
+            "shasum": ""
+        },
+        "require": {
+            "league/oauth2-client": "^2.4.1",
+            "nette/http": "~3.0.1",
+            "php": "^7.2"
+        },
+        "require-dev": {
+            "league/oauth2-facebook": "^2.0",
+            "league/oauth2-google": "^3.0",
+            "mockery/mockery": "^1.2",
+            "ninjify/qa": "^0.9.0",
+            "phpstan/extension-installer": "^1.0",
+            "phpstan/phpstan-deprecation-rules": "^0.11",
+            "phpstan/phpstan-nette": "^0.11",
+            "phpstan/phpstan-shim": "^0.11",
+            "phpstan/phpstan-strict-rules": "^0.11",
+            "phpunit/phpunit": "^8.1"
+        },
+        "time": "2019-06-17T18:00:34+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-develop": "0.3.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Contributte\\OAuth2Client\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Marek Bartoš",
+                "homepage": "https://marek-bartos.cz"
+            }
+        ],
+        "description": "Integration of league/oauth2-client into Nette framework",
+        "homepage": "https://github.com/contributte/oauth2-client",
+        "keywords": [
+            "client",
+            "nette",
+            "oauth2"
+        ]
+    },
+    {
+        "name": "contributte/recaptcha",
+        "version": "v3.3.0",
+        "version_normalized": "3.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/contributte/reCAPTCHA.git",
+            "reference": "0f4292745813a963e78f1156c54f20e48927434c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/contributte/reCAPTCHA/zipball/0f4292745813a963e78f1156c54f20e48927434c",
+            "reference": "0f4292745813a963e78f1156c54f20e48927434c",
+            "shasum": ""
+        },
+        "require": {
+            "nette/di": "~3.0.0",
+            "nette/forms": "~3.0.0",
+            "nette/utils": "~3.0.0|~3.1.0",
+            "php": "^7.2"
+        },
+        "require-dev": {
+            "ninjify/nunjuck": "^0.3.0",
+            "ninjify/qa": "^0.9.0",
+            "phpstan/phpstan-deprecation-rules": "^0.11",
+            "phpstan/phpstan-nette": "^0.11",
+            "phpstan/phpstan-shim": "^0.11",
+            "phpstan/phpstan-strict-rules": "^0.11"
+        },
+        "suggest": {
+            "ext-openssl": "To make requests via https"
+        },
+        "time": "2020-03-08T13:01:31+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.4.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Contributte\\ReCaptcha\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Milan Felix Šulc",
+                "homepage": "https://f3l1x.io"
+            }
+        ],
+        "description": "Google reCAPTCHA for Nette - Forms",
+        "homepage": "https://github.com/contributte/reCAPTCHA",
+        "keywords": [
+            "Forms",
+            "captcha",
+            "google",
+            "nette",
+            "recaptcha"
+        ]
+    },
+    {
+        "name": "guzzlehttp/guzzle",
+        "version": "6.5.3",
+        "version_normalized": "6.5.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/guzzle/guzzle.git",
+            "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/guzzle/guzzle/zipball/aab4ebd862aa7d04f01a4b51849d657db56d882e",
+            "reference": "aab4ebd862aa7d04f01a4b51849d657db56d882e",
             "shasum": ""
         },
         "require": {
             "ext-json": "*",
             "guzzlehttp/promises": "^1.0",
             "guzzlehttp/psr7": "^1.6.1",
-            "php": ">=5.5"
+            "php": ">=5.5",
+            "symfony/polyfill-intl-idn": "^1.11"
         },
         "require-dev": {
             "ext-curl": "*",
@@ -176,10 +305,9 @@
             "psr/log": "^1.1"
         },
         "suggest": {
-            "ext-intl": "Required for Internationalized Domain Name (IDN) support",
             "psr/log": "Required for using the Log middleware"
         },
-        "time": "2019-12-23T11:57:10+00:00",
+        "time": "2020-04-18T10:38:46+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -346,17 +474,17 @@
     },
     {
         "name": "latte/latte",
-        "version": "v2.7.0",
-        "version_normalized": "2.7.0.0",
+        "version": "v2.7.1",
+        "version_normalized": "2.7.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nette/latte.git",
-            "reference": "b91c508a3c5a990c84da8daaf41ad165601858e2"
+            "reference": "f2854b9261bfafe1d526cd836d8e8e11e14ae93b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nette/latte/zipball/b91c508a3c5a990c84da8daaf41ad165601858e2",
-            "reference": "b91c508a3c5a990c84da8daaf41ad165601858e2",
+            "url": "https://api.github.com/repos/nette/latte/zipball/f2854b9261bfafe1d526cd836d8e8e11e14ae93b",
+            "reference": "f2854b9261bfafe1d526cd836d8e8e11e14ae93b",
             "shasum": ""
         },
         "require": {
@@ -381,7 +509,7 @@
             "nette/php-generator": "to use tag {templatePrint}",
             "nette/utils": "to use filter |webalize"
         },
-        "time": "2020-03-05T01:19:01+00:00",
+        "time": "2020-04-01T14:27:27+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -421,6 +549,75 @@
             "security",
             "template",
             "twig"
+        ]
+    },
+    {
+        "name": "league/oauth2-client",
+        "version": "2.4.1",
+        "version_normalized": "2.4.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/thephpleague/oauth2-client.git",
+            "reference": "cc114abc622a53af969e8664722e84ca36257530"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/thephpleague/oauth2-client/zipball/cc114abc622a53af969e8664722e84ca36257530",
+            "reference": "cc114abc622a53af969e8664722e84ca36257530",
+            "shasum": ""
+        },
+        "require": {
+            "guzzlehttp/guzzle": "^6.0",
+            "paragonie/random_compat": "^1|^2|^9.99",
+            "php": "^5.6|^7.0"
+        },
+        "require-dev": {
+            "eloquent/liberator": "^2.0",
+            "eloquent/phony-phpunit": "^1.0|^3.0",
+            "jakub-onderka/php-parallel-lint": "^0.9.2",
+            "phpunit/phpunit": "^5.7|^6.0",
+            "squizlabs/php_codesniffer": "^2.3|^3.0"
+        },
+        "time": "2018-11-22T18:33:57+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-2.x": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "League\\OAuth2\\Client\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Alex Bilbie",
+                "email": "hello@alexbilbie.com",
+                "homepage": "http://www.alexbilbie.com",
+                "role": "Developer"
+            },
+            {
+                "name": "Woody Gilk",
+                "homepage": "https://github.com/shadowhand",
+                "role": "Contributor"
+            }
+        ],
+        "description": "OAuth 2.0 Client Library",
+        "keywords": [
+            "Authentication",
+            "SSO",
+            "authorization",
+            "identity",
+            "idp",
+            "oauth",
+            "oauth2",
+            "single sign on"
         ]
     },
     {
@@ -484,17 +681,17 @@
     },
     {
         "name": "nette/application",
-        "version": "v3.0.4",
-        "version_normalized": "3.0.4.0",
+        "version": "v3.0.5",
+        "version_normalized": "3.0.5.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nette/application.git",
-            "reference": "da24ae52e65fe52fa6d26f2181a56ec48958ccb0"
+            "reference": "2974fbfdaa06ca78b8f9f2c71bf16f91ce13f7a2"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nette/application/zipball/da24ae52e65fe52fa6d26f2181a56ec48958ccb0",
-            "reference": "da24ae52e65fe52fa6d26f2181a56ec48958ccb0",
+            "url": "https://api.github.com/repos/nette/application/zipball/2974fbfdaa06ca78b8f9f2c71bf16f91ce13f7a2",
+            "reference": "2974fbfdaa06ca78b8f9f2c71bf16f91ce13f7a2",
             "shasum": ""
         },
         "require": {
@@ -511,7 +708,7 @@
             "tracy/tracy": "<2.5"
         },
         "require-dev": {
-            "latte/latte": "^2.6",
+            "latte/latte": "^2.6.2",
             "mockery/mockery": "^1.0",
             "nette/di": "^v3.0",
             "nette/forms": "^3.0",
@@ -525,7 +722,7 @@
             "latte/latte": "Allows using Latte in templates",
             "nette/forms": "Allows to use Nette\\Application\\UI\\Form"
         },
-        "time": "2020-01-22T21:39:02+00:00",
+        "time": "2020-04-20T21:43:19+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -717,32 +914,29 @@
     },
     {
         "name": "nette/component-model",
-        "version": "v3.0.0",
-        "version_normalized": "3.0.0.0",
+        "version": "v3.0.1",
+        "version_normalized": "3.0.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nette/component-model.git",
-            "reference": "3153441f3d64bbdac300e75b8e5dde36590f7e01"
+            "reference": "66409cf5507c77edb46ffa88cf6a92ff58395601"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nette/component-model/zipball/3153441f3d64bbdac300e75b8e5dde36590f7e01",
-            "reference": "3153441f3d64bbdac300e75b8e5dde36590f7e01",
+            "url": "https://api.github.com/repos/nette/component-model/zipball/66409cf5507c77edb46ffa88cf6a92ff58395601",
+            "reference": "66409cf5507c77edb46ffa88cf6a92ff58395601",
             "shasum": ""
         },
         "require": {
             "nette/utils": "^2.5 || ^3.0",
             "php": ">=7.1"
         },
-        "conflict": {
-            "nette/application": "<2.4",
-            "nette/nette": "<2.2"
-        },
         "require-dev": {
             "nette/tester": "^2.0",
+            "phpstan/phpstan": "^0.12",
             "tracy/tracy": "^2.3"
         },
-        "time": "2019-02-20T07:13:15+00:00",
+        "time": "2020-04-21T13:48:20+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -758,8 +952,8 @@
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "BSD-3-Clause",
-            "GPL-2.0",
-            "GPL-3.0"
+            "GPL-2.0-only",
+            "GPL-3.0-only"
         ],
         "authors": [
             {
@@ -993,17 +1187,17 @@
     },
     {
         "name": "nette/forms",
-        "version": "v3.0.3",
-        "version_normalized": "3.0.3.0",
+        "version": "v3.0.4",
+        "version_normalized": "3.0.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nette/forms.git",
-            "reference": "ec59537f26d5a9ba0ca3575f628957273e2a361a"
+            "reference": "fdedfc2619d75bc2f5999d03acb982557966ae56"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nette/forms/zipball/ec59537f26d5a9ba0ca3575f628957273e2a361a",
-            "reference": "ec59537f26d5a9ba0ca3575f628957273e2a361a",
+            "url": "https://api.github.com/repos/nette/forms/zipball/fdedfc2619d75bc2f5999d03acb982557966ae56",
+            "reference": "fdedfc2619d75bc2f5999d03acb982557966ae56",
             "shasum": ""
         },
         "require": {
@@ -1016,13 +1210,13 @@
             "nette/di": "<3.0-stable"
         },
         "require-dev": {
-            "latte/latte": "^2.4.1",
+            "latte/latte": "^2.7",
             "nette/di": "^3.0",
             "nette/tester": "^2.0",
             "phpstan/phpstan-nette": "^0.12",
             "tracy/tracy": "^2.4"
         },
-        "time": "2020-01-02T16:48:08+00:00",
+        "time": "2020-04-20T12:59:01+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1038,8 +1232,8 @@
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "BSD-3-Clause",
-            "GPL-2.0",
-            "GPL-3.0"
+            "GPL-2.0-only",
+            "GPL-3.0-only"
         ],
         "authors": [
             {
@@ -1064,36 +1258,38 @@
     },
     {
         "name": "nette/http",
-        "version": "v3.0.3",
-        "version_normalized": "3.0.3.0",
+        "version": "v3.0.4",
+        "version_normalized": "3.0.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nette/http.git",
-            "reference": "1df063526343299ea7fccdf90de6575db3559ff5"
+            "reference": "e4d8d360c66c8af9512ca13ab629d312af2b3ce3"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nette/http/zipball/1df063526343299ea7fccdf90de6575db3559ff5",
-            "reference": "1df063526343299ea7fccdf90de6575db3559ff5",
+            "url": "https://api.github.com/repos/nette/http/zipball/e4d8d360c66c8af9512ca13ab629d312af2b3ce3",
+            "reference": "e4d8d360c66c8af9512ca13ab629d312af2b3ce3",
             "shasum": ""
         },
         "require": {
-            "nette/utils": "^3.0",
+            "nette/utils": "^3.1",
             "php": ">=7.1"
         },
         "conflict": {
-            "nette/di": "<3.0.0-stable"
+            "nette/di": "<3.0.3"
         },
         "require-dev": {
             "nette/di": "^3.0",
+            "nette/security": "^3.0",
             "nette/tester": "^2.0",
+            "phpstan/phpstan": "^0.12",
             "tracy/tracy": "^2.4"
         },
         "suggest": {
             "ext-fileinfo": "to detect type of uploaded files",
             "nette/security": "allows use Nette\\Http\\UserStorage"
         },
-        "time": "2019-10-31T15:07:40+00:00",
+        "time": "2020-03-31T13:31:41+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -1109,8 +1305,8 @@
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "BSD-3-Clause",
-            "GPL-2.0",
-            "GPL-3.0"
+            "GPL-2.0-only",
+            "GPL-3.0-only"
         ],
         "authors": [
             {
@@ -1138,22 +1334,22 @@
     },
     {
         "name": "nette/mail",
-        "version": "v3.1.0",
-        "version_normalized": "3.1.0.0",
+        "version": "v3.1.2",
+        "version_normalized": "3.1.2.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nette/mail.git",
-            "reference": "82fb366ff218283bd19327ab0f897d2be20a4ce0"
+            "reference": "374dba88ecc83fc28bc2065846bd5e4de70b43cc"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nette/mail/zipball/82fb366ff218283bd19327ab0f897d2be20a4ce0",
-            "reference": "82fb366ff218283bd19327ab0f897d2be20a4ce0",
+            "url": "https://api.github.com/repos/nette/mail/zipball/374dba88ecc83fc28bc2065846bd5e4de70b43cc",
+            "reference": "374dba88ecc83fc28bc2065846bd5e4de70b43cc",
             "shasum": ""
         },
         "require": {
             "ext-iconv": "*",
-            "nette/utils": "^2.4 || ^3.0",
+            "nette/utils": "^3.1",
             "php": ">=7.1"
         },
         "conflict": {
@@ -1162,33 +1358,31 @@
         "require-dev": {
             "nette/di": "^3.0.0",
             "nette/tester": "^2.0",
+            "phpstan/phpstan-nette": "^0.12",
             "tracy/tracy": "^2.4"
         },
         "suggest": {
             "ext-fileinfo": "to detect type of attached files",
             "ext-openssl": "to use Nette\\Mail\\DkimSigner"
         },
-        "time": "2019-07-01T12:17:45+00:00",
+        "time": "2020-03-25T22:08:54+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "3.0-dev"
+                "dev-master": "3.1-dev"
             }
         },
         "installation-source": "dist",
         "autoload": {
             "classmap": [
                 "src/"
-            ],
-            "files": [
-                "src/compatibility.php"
             ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
             "BSD-3-Clause",
-            "GPL-2.0",
-            "GPL-3.0"
+            "GPL-2.0-only",
+            "GPL-3.0-only"
         ],
         "authors": [
             {
@@ -1735,6 +1929,53 @@
         ]
     },
     {
+        "name": "paragonie/random_compat",
+        "version": "v9.99.99",
+        "version_normalized": "9.99.99.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/paragonie/random_compat.git",
+            "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/paragonie/random_compat/zipball/84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+            "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "4.*|5.*",
+            "vimeo/psalm": "^1"
+        },
+        "suggest": {
+            "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+        },
+        "time": "2018-07-02T15:55:56+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Paragon Initiative Enterprises",
+                "email": "security@paragonie.com",
+                "homepage": "https://paragonie.com"
+            }
+        ],
+        "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+        "keywords": [
+            "csprng",
+            "polyfill",
+            "pseudorandom",
+            "random"
+        ]
+    },
+    {
         "name": "psr/http-message",
         "version": "1.0.1",
         "version_normalized": "1.0.1.0",
@@ -1990,6 +2231,70 @@
         ]
     },
     {
+        "name": "symfony/polyfill-intl-idn",
+        "version": "v1.15.0",
+        "version_normalized": "1.15.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-intl-idn.git",
+            "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+            "reference": "47bd6aa45beb1cd7c6a16b7d1810133b728bdfcf",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3",
+            "symfony/polyfill-mbstring": "^1.3",
+            "symfony/polyfill-php72": "^1.10"
+        },
+        "suggest": {
+            "ext-intl": "For best performance"
+        },
+        "time": "2020-03-09T19:04:49+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.15-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Intl\\Idn\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Laurent Bassin",
+                "email": "laurent@bassin.info"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfill for intl's idn_to_ascii and idn_to_utf8 functions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
+            "idn",
+            "intl",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
         "name": "symfony/polyfill-mbstring",
         "version": "v1.15.0",
         "version_normalized": "1.15.0.0",
@@ -2045,6 +2350,63 @@
         "keywords": [
             "compatibility",
             "mbstring",
+            "polyfill",
+            "portable",
+            "shim"
+        ]
+    },
+    {
+        "name": "symfony/polyfill-php72",
+        "version": "v1.15.0",
+        "version_normalized": "1.15.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/symfony/polyfill-php72.git",
+            "reference": "37b0976c78b94856543260ce09b460a7bc852747"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/37b0976c78b94856543260ce09b460a7bc852747",
+            "reference": "37b0976c78b94856543260ce09b460a7bc852747",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2020-02-27T09:26:54+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.15-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Symfony\\Polyfill\\Php72\\": ""
+            },
+            "files": [
+                "bootstrap.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "https://symfony.com/contributors"
+            }
+        ],
+        "description": "Symfony polyfill backporting some PHP 7.2+ features to lower PHP versions",
+        "homepage": "https://symfony.com",
+        "keywords": [
+            "compatibility",
             "polyfill",
             "portable",
             "shim"
@@ -2121,17 +2483,17 @@
     },
     {
         "name": "tracy/tracy",
-        "version": "v2.7.3",
-        "version_normalized": "2.7.3.0",
+        "version": "v2.7.4",
+        "version_normalized": "2.7.4.0",
         "source": {
             "type": "git",
             "url": "https://github.com/nette/tracy.git",
-            "reference": "344c77293038173f49678d9a95c27da6cbdbccd0"
+            "reference": "60f2e554c0253d2b7cf096298650d8293e9f8318"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/nette/tracy/zipball/344c77293038173f49678d9a95c27da6cbdbccd0",
-            "reference": "344c77293038173f49678d9a95c27da6cbdbccd0",
+            "url": "https://api.github.com/repos/nette/tracy/zipball/60f2e554c0253d2b7cf096298650d8293e9f8318",
+            "reference": "60f2e554c0253d2b7cf096298650d8293e9f8318",
             "shasum": ""
         },
         "require": {
@@ -2154,7 +2516,7 @@
         "suggest": {
             "https://nette.org/donate": "Please support Tracy via a donation"
         },
-        "time": "2020-02-23T18:40:15+00:00",
+        "time": "2020-04-11T17:26:33+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2196,17 +2558,17 @@
     },
     {
         "name": "ublaboo/datagrid",
-        "version": "v6.2.11",
-        "version_normalized": "6.2.11.0",
+        "version": "v6.2.14",
+        "version_normalized": "6.2.14.0",
         "source": {
             "type": "git",
             "url": "https://github.com/contributte/datagrid.git",
-            "reference": "59bfa46ca9e79c990d8e55b6de1d7fa8d4e36807"
+            "reference": "037c7110d27905803212b4fb480069d74002abc5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/contributte/datagrid/zipball/59bfa46ca9e79c990d8e55b6de1d7fa8d4e36807",
-            "reference": "59bfa46ca9e79c990d8e55b6de1d7fa8d4e36807",
+            "url": "https://api.github.com/repos/contributte/datagrid/zipball/037c7110d27905803212b4fb480069d74002abc5",
+            "reference": "037c7110d27905803212b4fb480069d74002abc5",
             "shasum": ""
         },
         "require": {
@@ -2232,7 +2594,7 @@
             "tharos/leanmapper": "~3.4.1",
             "tracy/tracy": "~2.6.3"
         },
-        "time": "2020-03-17T11:00:45+00:00",
+        "time": "2020-04-20T22:08:03+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
@@ -2264,6 +2626,67 @@
             "datagrid",
             "grid",
             "nette"
+        ]
+    },
+    {
+        "name": "wohali/oauth2-discord-new",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/wohali/oauth2-discord-new.git",
+            "reference": "990bdfb59b4cd2086e0524b429dc12b5142d66ad"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/wohali/oauth2-discord-new/zipball/990bdfb59b4cd2086e0524b429dc12b5142d66ad",
+            "reference": "990bdfb59b4cd2086e0524b429dc12b5142d66ad",
+            "shasum": ""
+        },
+        "require": {
+            "league/oauth2-client": "^2.0"
+        },
+        "conflict": {
+            "team-reflex/oauth2-discord": ">=1.0"
+        },
+        "require-dev": {
+            "jakub-onderka/php-parallel-lint": "~0.9",
+            "mockery/mockery": "~0.9",
+            "phpunit/phpunit": "^5.0",
+            "squizlabs/php_codesniffer": "^2.0"
+        },
+        "time": "2017-10-15T23:24:28+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Wohali\\OAuth2\\Client\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Joan Touzet",
+                "email": "wohali@gmail.com",
+                "homepage": "https://github.com/wohali"
+            }
+        ],
+        "description": "Discord OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
+        "keywords": [
+            "authorisation",
+            "authorization",
+            "client",
+            "discord",
+            "oauth",
+            "oauth2"
         ]
     }
 ]

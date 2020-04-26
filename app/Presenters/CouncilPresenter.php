@@ -31,5 +31,6 @@ class CouncilPresenter extends BasePresenter
     {
         // me big dumb
         $this->template->council = $this->database->table("awoo_council")->order("id DESC");
+        $this->template->discord = $this->model->discord;
     }
 }

@@ -54,7 +54,7 @@ class Authentication implements IAuthenticator {
             throw new AuthenticationException("ACC_NOT_FOUND");
         }
 
-        if (!$this->passwords->verify($password, $password)) {
+        if (!$this->passwords->verify($password, $user->password)) {
             throw new AuthenticationException("ACC_WRONG_PASS");
         }
 
@@ -64,7 +64,6 @@ class Authentication implements IAuthenticator {
         if (!$user->active) {
             throw new AuthenticationException("ACC_NOT_VERIFIED");
         }
-
 
         return new Nette\Security\Identity($user->id, $user->role, [
             'id'=>$user->id,

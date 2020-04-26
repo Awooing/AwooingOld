@@ -36,6 +36,9 @@ class MainModel
     /** @var CdnModel */
     public $cdn;
 
+    /** @var DiscordModel */
+    public $discord;
+
     /**
      * MainModel constructor.
      * @param Context $db
@@ -44,8 +47,9 @@ class MainModel
      * @param UserModel $user
      * @param NewsModel $news
      * @param CdnModel $cdn
+     * @param DiscordModel $discord
      */
-    public function __construct(Context $db, Passwords $pw, VotingModel $vote, UserModel $user, NewsModel $news, CdnModel $cdn)
+    public function __construct(Context $db, Passwords $pw, VotingModel $vote, UserModel $user, NewsModel $news, CdnModel $cdn, DiscordModel $discord)
     {
         $this->database = $db;
         $this->passwords = $pw;
@@ -53,6 +57,7 @@ class MainModel
         $this->user = $user;
         $this->news = $news;
         $this->cdn = $cdn;
+        $this->discord = $discord;
     }
 
     /* Components */
@@ -69,7 +74,6 @@ class MainModel
 
         $form->addText('username', "Username:")->setRequired("This field is required.")->setHtmlAttribute("class", "form-control")->setHtmlAttribute("placeholder", "Username");
         $form->addPassword('password', "Password:")->setRequired("This field is required.")->setHtmlAttribute("class", "form-control")->setHtmlAttribute("placeholder", "Password");
-        // TODO: Add ReCaptcha
         $form->addSubmit("submit", "Login")->setHtmlAttribute("class", "btn btn-primary my-4");
 
         $renderer = $form->getRenderer();

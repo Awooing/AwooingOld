@@ -2,7 +2,7 @@
 {block content}
     <style>
     </style>
-    <h4 id="wrapper-pop">Posted by {$author->showAs} &ndash; {$news->created_at|date:"d/m/Y"}</h4>
+    <h4 id="wrapper-pop">Posted by <a class="ajax" n:href="Awooers:view $author->id">{$users->getUser($author->id)->showAs}</a> &ndash; {$news->created_at|date:"d/m/Y"}</h4>
     <div class="awoo-wrapper" style="margin-bottom: 1rem;color: white;margin-top: 0">
         {$news->content|noescape|awooIt}
     </div>
@@ -11,10 +11,10 @@
         {if $user->isAllowed("comments", "view")}
             {foreach $comments as $comment}
                 <div id="awoo-comment-block" style="align-items: flex-start;display: flex;text-align: left;background: rgba(0,0,0,0.18);padding: 1rem;border-radius: 2rem;color: white;">
-                    <img style="height: 4rem;border-radius: 6rem" src="{$users->getUser($comment->author)->profile_picture}">
+                    <img style="height: 4rem;border-radius: 6rem" src="{$discord->getAvatarUrlByUserId($author->discord_id)}">
                     <div id="awoo-comment-inner" style="margin-left: 1rem;color:white;">
                         <h3 style="font-size: 0.9rem;color: gray;margin: 0">{$comment->created_at|date:'m/d/Y'}</h3>
-                        <p style="font-size: 1.2rem;color: white;margin: 0">{$users->getUser($comment->author)->showAs} <span style="font-weight: 100">wrote:</span></p>
+                        <p style="font-size: 1.2rem;color: white;margin: 0"><a class="ajax" n:href="Awooers:view $comment->author_id">{$users->getUser($comment->author)->showAs}</a> <span style="font-weight: 100">wrote:</span></p>
                         <h3 style="font-size: 0.9rem;color: gray;">{$comment->content}</h3>
                     </div>
                 </div>

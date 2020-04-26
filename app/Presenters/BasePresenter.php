@@ -55,6 +55,9 @@ class BasePresenter extends Nette\Application\UI\Presenter {
             $string = str_replace(":DestroyerAwoo:", "<img alt='Destroyer Awoo' class='awoo' src='https://cdn.discordapp.com/emojis/694634291052806290.png?v=1'>", $string);
             return $string;
         });
+        $this->template->addFilter("stripChars", function ($content) {
+            return preg_replace("/[^a-zA-Z]/", "", $content);
+        });
 
         if ($this->getUser()->isLoggedIn()) {
             $user = $this->model->user->getUser($this->getUser()->getId());

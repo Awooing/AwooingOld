@@ -4,7 +4,7 @@
     {foreach $posts as $news}
         <div class="awoo-wrapper">
             <a class="title-link ajax" n:href="News:view $news->id">{$news->title}</a>
-            <h4 style="font-size: 1rem;font-weight: 300;color: var(--gray);margin: 0">By {$userModel->getUser($news->user_id)->showAs} &ndash; {$news->created_at|date:"d/m/Y"}</h4>
+            <h4 style="font-size: 1rem;font-weight: 300;color: var(--gray);margin: 0">By <a class="ajax" n:href="Awooers:view $news->user_id">{$userModel->getUser($news->user_id)->showAs}</a> &ndash; {$news->created_at|date:"d/m/Y"}</h4>
 
             {$news->content|noescape|striptags|truncate:200|awooIt} <a style="border-radius: 2rem;margin-top: 4px" class="btn btn-primary float-right ajax" n:href="News:view $news->id">See more</a>
         </div>

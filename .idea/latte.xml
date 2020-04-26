@@ -32,7 +32,6 @@
         <LatteCustomMacroSettings AllowedModifiers="true" HasParameters="true" MacroName="_" MacroType="PAIR" />
         <LatteCustomMacroSettings HasParameters="true" MacroName="dump" />
         <LatteCustomMacroSettings AllowedModifiers="true" HasParameters="true" MacroName="cache" MacroType="PAIR" />
-        <LatteCustomMacroSettings AllowedModifiers="true" HasParameters="true" MacroName="awooo" />
       </list>
     </option>
     <option name="customFunctionSettings">

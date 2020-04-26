@@ -8,26 +8,33 @@ class ComposerStaticInit091ed5d24b4127ffc48411e34be2086f
 {
     public static $files = array (
         '19a7e2c3b1d506dcdc1b60aab8e102e4' => __DIR__ . '/..' . '/tracy/tracy/src/Tracy/shortcuts.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
-        'afdda9f94b76f77a7518e02eee753cc9' => __DIR__ . '/..' . '/nette/mail/src/compatibility.php',
         '8a9dc1de0ca7e01f3e08231539562f61' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/functions.php',
         '83de50569bffc80aba37a89ed243f260' => __DIR__ . '/..' . '/sociallydev/spaces-api/spaces.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'W' => 
+        array (
+            'Wohali\\OAuth2\\Client\\' => 21,
+        ),
         'U' => 
         array (
             'Ublaboo\\DataGrid\\' => 17,
         ),
         'S' => 
         array (
+            'Symfony\\Polyfill\\Php72\\' => 23,
             'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Intl\\Idn\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\PropertyAccess\\' => 33,
             'Symfony\\Component\\Inflector\\' => 28,
@@ -35,6 +42,10 @@ class ComposerStaticInit091ed5d24b4127ffc48411e34be2086f
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
+        ),
+        'L' => 
+        array (
+            'League\\OAuth2\\Client\\' => 21,
         ),
         'J' => 
         array (
@@ -48,6 +59,8 @@ class ComposerStaticInit091ed5d24b4127ffc48411e34be2086f
         ),
         'C' => 
         array (
+            'Contributte\\ReCaptcha\\' => 22,
+            'Contributte\\OAuth2Client\\' => 25,
             'Contributte\\Application\\' => 24,
         ),
         'A' => 
@@ -57,13 +70,25 @@ class ComposerStaticInit091ed5d24b4127ffc48411e34be2086f
     );
 
     public static $prefixDirsPsr4 = array (
+        'Wohali\\OAuth2\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wohali/oauth2-discord-new/src',
+        ),
         'Ublaboo\\DataGrid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ublaboo/datagrid/src',
         ),
+        'Symfony\\Polyfill\\Php72\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php72',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Intl\\Idn\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-intl-idn',
         ),
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
@@ -81,6 +106,10 @@ class ComposerStaticInit091ed5d24b4127ffc48411e34be2086f
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
+        'League\\OAuth2\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/league/oauth2-client/src',
+        ),
         'JmesPath\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
@@ -96,6 +125,14 @@ class ComposerStaticInit091ed5d24b4127ffc48411e34be2086f
         'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
+        ),
+        'Contributte\\ReCaptcha\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/contributte/recaptcha/src',
+        ),
+        'Contributte\\OAuth2Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/contributte/oauth2-client/src',
         ),
         'Contributte\\Application\\' => 
         array (
@@ -366,6 +403,7 @@ class ComposerStaticInit091ed5d24b4127ffc48411e34be2086f
         'Nette\\Mail\\DkimSigner' => __DIR__ . '/..' . '/nette/mail/src/Mail/DkimSigner.php',
         'Nette\\Mail\\FallbackMailer' => __DIR__ . '/..' . '/nette/mail/src/Mail/FallbackMailer.php',
         'Nette\\Mail\\FallbackMailerException' => __DIR__ . '/..' . '/nette/mail/src/Mail/exceptions.php',
+        'Nette\\Mail\\IMailer' => __DIR__ . '/..' . '/nette/mail/src/Mail/Mailer.php',
         'Nette\\Mail\\Mailer' => __DIR__ . '/..' . '/nette/mail/src/Mail/Mailer.php',
         'Nette\\Mail\\Message' => __DIR__ . '/..' . '/nette/mail/src/Mail/Message.php',
         'Nette\\Mail\\MimePart' => __DIR__ . '/..' . '/nette/mail/src/Mail/MimePart.php',

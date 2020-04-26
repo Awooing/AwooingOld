@@ -2,9 +2,9 @@ parameters:
 
 
 database:
-	dsn: 'mysql:host=s2.kettlemc.net;dbname=awoo'
-	user: vottus
-	password: aw009%SW3#3t9F^rYKr6@
+	dsn: 'mysql:host=s3.kettlemc.net;dbname=awoo'
+	user: root
+	password: KfkJxi820_b9QOeQ4iep
 
 services:
     authenticator: Awoo\Auth\Authentication
@@ -13,4 +13,14 @@ services:
     - Awoo\Models\MainModel
     - Awoo\Models\NewsModel
     - Awoo\Models\CdnModel
+    - Awoo\Models\DiscordModel
     - Awoo\Auth\Authorization::awooThePerms()
+    - Wohali\OAuth2\Client\Provider\Discord([clientId: "697549645848772658", clientSecret: "N03MrDX1XWIE0-fY1Tz71qSULN0_yeg6"])
+    - Awoo\OAuth\Flow\DiscordAuthCodeFlow
+    - Awoo\OAuth\Discord
+extensions:
+    recaptcha: Contributte\ReCaptcha\DI\ReCaptchaExtension
+
+recaptcha:
+    secretKey: "0x7dbAb27215e1fB503321E049a7012a88016A2a0d"
+    siteKey: 5afbc1c5-db38-4946-b745-ec547a58dc82

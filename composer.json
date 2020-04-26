@@ -21,8 +21,12 @@
 		"latte/latte": "^2.5",
 		"tracy/tracy": "^2.6",
 		"ublaboo/datagrid": "^6.2.0",
-		"sociallydev/spaces-api": "dev-master"
-	},
+		"sociallydev/spaces-api": "dev-master",
+		"contributte/recaptcha": "^3.3",
+		"contributte/oauth2-client": "^0.2.0",
+		"wohali/oauth2-discord-new": "^1.0",
+      "ext-json": "*"
+    },
 	"require-dev": {
 		"nette/tester": "^2.0"
 	},

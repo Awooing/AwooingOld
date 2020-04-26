@@ -3,7 +3,20 @@
 
 <head>
 	<title n:snippet="title">{ifset title}{include title|stripHtml} – {/ifset}Awooing.moe</title>
-	{include './Includes/head.latte'}
+
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="apple-touch-icon" sizes="76x76" href="{$baseUrl}/static/img/awoos/awooo.png">
+	<link rel="icon" type="image/png" href="{$baseUrl}/static/img/awoos/awooo.png">
+
+	<link href="{$baseUrl}/static/css/fonts.css" rel="stylesheet">
+	<link href="{$baseUrl}/static/css/argon.min.css?v=1.2.0" rel="stylesheet" />
+	<link href="{$baseUrl}/static/css/awoo.css" rel="stylesheet" >
+
+	<script src="{$baseUrl}/static/js/jquery.min.js"></script>
+	<script src="{$baseUrl}/static/js/sweetalert.min.js"></script>
+	<script src="{$baseUrl}/static/fa/js/all.js"></script>
 </head>
 
 {snippet login}
@@ -11,6 +24,7 @@
 		{include './Includes/loginModal.latte'}
 	{/if}
 {/snippet}
+
 
 <body class="index-page bg-dark">
 
@@ -25,7 +39,7 @@
 		<div class="page-header">
 			<div class="container shape-container d-flex align-items-center py-lg">
 				<div class="col px-0">
-					<h1 n:snippet="banner" class="welcome" style="margin:0;">{ifset title}{include title|stripHtml}{else}The Awooing Place{/ifset}</h1>
+					<h1 n:snippet="banner" class="welcome shadowed" style="margin:0;display: inline-block;">{ifset title}{include title|stripHtml}{else}The Awooing Place{/ifset}</h1>
 				</div>
 			</div>
 		</div>
@@ -72,10 +86,13 @@
 </div>
 
 {include './Includes/footer.latte'}
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- re-Captcha -->
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
+<script src="{$baseUrl}/static/js/flatpickr.min.js"></script>
 <script src="{$baseUrl}/static/js/naja/Naja.js"></script>
 <script src="{$baseUrl}/static/js/main.js"></script>
 <script src="{$baseUrl}/static/js/topbar.min.js"></script>
+<script src="{$baseUrl}/static/js/netteForms.min.js"></script>
 <script src="{$baseUrl}/static/js/bootstrap/popper.min.js" type="text/javascript"></script>
 <script src="{$baseUrl}/static/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
 <script src="{$baseUrl}/static/js/bootstrap/argon.min.js?v=1.2.0" type="text/javascript"></script>

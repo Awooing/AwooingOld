@@ -1,0 +1,17 @@
+{block title}Register using Discord{/block}
+
+{block content}
+    {varType Wohali\OAuth2\Client\Provider\DiscordResourceOwner $owner}
+
+    <div class="awoo-wrapper" style="border-bottom-left-radius:0;border-bottom-right-radius: 0;margin-bottom: 0;background: rgba(0,0,0,0.1);padding: 1.8rem 0.8rem 0.8rem;">
+        <div style="margin-left: 12px">
+            <p style="margin:0">Your Discord: <strong style="font-weight: bold">{$owner->getUsername()}#{$owner->getDiscriminator()}</strong></p>
+            <p style="margin: 0">Your Email: <strong style="font-weight: bold">{$owner->getEmail()}</strong></p>
+        </div>
+    </div>
+    <div class="awoo-wrapper" style="border-top-left-radius:0;border-top-right-radius: 0;margin-top: 0;background: rgba(0,0,0,0.2);padding: 0.8rem 0.8rem 2rem;">
+        <div style="margin-left: 12px">
+            {control registerDiscord}
+        </div>
+    </div>
+{/block}

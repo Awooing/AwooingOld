@@ -204,6 +204,11 @@ class AdminPresenter extends BasePresenter
         $grid = new DataGrid($this, $name);
 
         $grid->setDataSource($this->database->table("awoo_users"));
+        $grid->addColumnText('id', '#');
         $grid->addColumnText('username', 'Name');
+        $grid->addColumnText('email', 'Email');
+        $grid->addColumnText('showAs', 'Show as');
+        $grid->addColumnText('role', 'Role');
     }
+
 }

@@ -20,8 +20,24 @@
 
     </div>
     <div style="background: rgba(0,0,0,0.15);padding: 1rem;margin: 0 1rem 1rem;border-radius: 0 0 2rem 2rem;text-align: center;color: white">
-        <p style="display: inline-block;margin-right: 30px;margin-bottom: 0;">Posts: <strong style="font-weight: bold">{$posts}</strong></p>
-        <p style="margin-right: 30px;margin-bottom: 0;display: inline-block">Comments: <strong style="font-weight: bold">{$comments}</strong></p>
+        <p style="display: inline-block;margin-right: 30px;margin-bottom: 0;">Posts: <strong style="font-weight: bold">{$postCount}</strong></p>
+        <p style="margin-right: 30px;margin-bottom: 0;display: inline-block">Comments: <strong style="font-weight: bold">{$commentCount}</strong></p>
         <p style="margin-bottom: 0;display: inline-block">Awoos: <strong style="font-weight: bold">Coming soon</strong></p>
     </div>
+
+    <div style="align-items: flex-start;display: flex;text-align: left;background: rgba(0,0,0,0.18);border-radius: 2rem;color: white;margin-left: 1rem;margin-right: 1rem;margin-bottom: 0.8rem;padding: 1rem 1rem 2rem;">
+        <img style="height: 4rem;border-radius: 6rem;margin-top: 1.4rem;margin-right: 0.9rem" src="{$users->getUser($user->id)->profile_picture}">
+        {control addUpdate}
+    </div>
+
+    {foreach $comments as $comment}
+        <div id="awoo-comment-block" style="align-items: flex-start;display: flex;text-align: left;background: rgba(0,0,0,0.18);padding: 1rem;border-radius: 2rem;color: white;margin-left: 1rem;margin-right: 1rem;margin-bottom: 0.8rem">
+            <img style="height: 4rem;border-radius: 6rem;" src="{$users->getUser($comment->author_id)->profile_picture}">
+            <div id="awoo-comment-inner" style="margin-left: 1rem;color:white;">
+                <h3 style="font-size: 0.9rem;color: gray;margin: 0">{$comment->created_at|date:'m/d/Y'}</h3>
+                <p style="font-size: 1.2rem;color: white;margin: 0">{$users->getUser($comment->author_id)->showAs} <span style="font-weight: 100">wrote:</span></p>
+                <h3 style="font-size: 0.9rem;color: gray;">{$comment->content}</h3>
+            </div>
+        </div>
+    {/foreach}
 {/block}
