@@ -1,12 +1,73 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Home{% endblock %} &ndash; Awooing.moe</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="apple-touch-icon" sizes="76x76" href="https://awooing.moe/static/img/awoos/awooo.png">
+    <link rel="icon" type="image/png" href="https://awooing.moe/static/img/awoos/awooo.png">
+
+    <link rel="apple-touch-icon" sizes="76x76" href="https://awooing.moe/img/awoos/awooo.png">
+    <link rel="icon" type="image/png" href="https://awooing.moe/img/awoos/awooo.png">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Livvic:400,700,900&amp;display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link href="https://awooing.moe/static/css/argon.css?v=1.2.0" rel="stylesheet">
+    <link rel="stylesheet" href="https://awooing.moe/static/css/awoo.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script></head>
+
+</head>
+
+{% if true %}
+    {% include 'loginModal.html.twig' %}
+{% endif %}
+
+
+<body class="index-page bg-dark">
+
+{% include 'navigation.html.twig' %}
+
+<div class="awoo-container" >
+
+    <!-- ::Banner -->
+    <div class="section section-hero section-shaped" id="awoo-banner">
+        <div class="shape shape-style-1 shape-primary awoo-banner-gradient">
+        </div>
+        <div class="page-header">
+            <div class="container shape-container d-flex align-items-center py-lg">
+                <div class="col px-0">
+                    <h1 class="welcome shadowed" style="margin:0;display: inline-block;">{{ block('title') }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- \::Banner -->
+
+    <div id="main-container" class="container">
+
+        <!-- ::so here we start -->
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+        <!-- \::so here we end -->
+    </div>
+</div>
+
+{% include 'footer.html.twig' %}
+<!-- re-Captcha -->
+<script src="https://hcaptcha.com/1/api.js" async defer></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://awooing.moe/static/js/naja/Naja.js"></script>
+<script src="https://awooing.moe/static/js/main.js"></script>
+<script src="https://awooing.moe/static/js/bootstrap/popper.min.js" type="text/javascript"></script>
+<script src="https://awooing.moe/static/js/bootstrap/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://awooing.moe/static/js/bootstrap/argon.min.js?v=1.2.0" type="text/javascript"></script>
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{% endblock %}
+</body>
+
 </html>
